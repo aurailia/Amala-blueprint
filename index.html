@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amala Christie Eberhard — Human Design Business Blueprint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#ff8fc7; --pink-deep:#e95fa6; --teal:#5ad7d0; --teal-deep:#2bb3ab;
+  --violet:#9b6dff; --magenta:#ff6fb0;
+  --ink:#140f29; --ink-2:#1c1640; --panel:#211a47; --panel-2:#1a1438;
+  --text:#fbf7ff; --text-soft:#e4dcf5; --muted:#b3a4d2;
+  --gold:#ffd89b; --cream:#fdf7ef;
+  --line:rgba(255,180,225,0.16);
+  --line-2:rgba(120,200,220,0.18);
+  --grad:linear-gradient(120deg,#ff8fc7 0%,#9b6dff 50%,#5ad7d0 100%);
+  --grad-text:linear-gradient(110deg,#ffa6d4,#b98cff 55%,#6fe0d8);
+  --biz-grad:linear-gradient(120deg,rgba(255,143,199,.16),rgba(155,109,255,.12));
+  --biz-line:rgba(255,143,199,.4);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--ink);color:var(--text);line-height:1.72;overflow-x:hidden}
+
+/* cosmic bg */
+.cosmos{position:fixed;inset:0;z-index:-3;background:
+  radial-gradient(ellipse 70% 50% at 12% 8%,rgba(255,143,199,.26),transparent 60%),
+  radial-gradient(ellipse 60% 50% at 88% 14%,rgba(90,215,208,.22),transparent 60%),
+  radial-gradient(ellipse 80% 60% at 50% 100%,rgba(155,109,255,.26),transparent 65%),
+  linear-gradient(180deg,#120c25 0%,#160f2e 45%,#0f0a20 100%);}
+.stars{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none}
+.star{position:absolute;border-radius:50%;background:#fff;animation:tw var(--d,4s) ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.12;transform:scale(.7)}50%{opacity:.85;transform:scale(1.25)}}
+.grid-overlay{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:54px 54px;}
+
+/* ===== LAYOUT: sidebar + content ===== */
+.shell{display:flex;min-height:100vh;max-width:1500px;margin:0 auto}
+.sidebar{width:300px;flex:0 0 300px;position:sticky;top:0;height:100vh;overflow-y:auto;
+  padding:30px 20px;border-right:1px solid var(--line);background:rgba(16,11,33,.6);backdrop-filter:blur(14px);scrollbar-width:thin}
+.sidebar::-webkit-scrollbar{width:6px}.sidebar::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.brand .logo{width:42px;height:42px;border-radius:13px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 8px 24px -8px rgba(255,143,199,.6)}
+.brand .bt{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--text)}
+.brand .bt span{background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-style:italic}
+.side-name{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:400;margin:18px 0 4px;line-height:1.1}
+.side-sub{font-size:.78rem;color:var(--muted);margin-bottom:20px}
+.side-stats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
+.side-stats .chip{font-size:.64rem;letter-spacing:.04em;padding:5px 9px;border-radius:999px;background:rgba(255,143,199,.1);border:1px solid var(--line);color:var(--text-soft)}
+.navlist{list-style:none;display:flex;flex-direction:column;gap:3px}
+.navlist button{width:100%;text-align:left;background:transparent;border:none;color:var(--text-soft);font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:500;
+  padding:11px 14px;border-radius:12px;cursor:pointer;transition:all .25s;display:flex;align-items:center;gap:11px}
+.navlist button .nx{font-size:.66rem;color:var(--muted);font-variant-numeric:tabular-nums;min-width:18px}
+.navlist button:hover{background:rgba(255,143,199,.08);color:#fff}
+.navlist button.active{background:var(--grad);color:#1a1330;font-weight:600;box-shadow:0 8px 22px -10px rgba(255,143,199,.7)}
+.navlist button.active .nx{color:rgba(26,19,48,.7)}
+.side-cta{margin-top:24px;display:block;text-align:center;font-weight:600;font-size:.85rem;color:#1a1330;background:var(--grad);padding:12px;border-radius:12px;text-decoration:none;transition:transform .25s}
+.side-cta:hover{transform:translateY(-2px)}
+
+.content{flex:1;min-width:0;padding:0 0 80px}
+
+/* ===== SLIM STICKY IDENTITY BAR ===== */
+.idbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:14px 56px;border-bottom:1px solid var(--line);
+  background:rgba(18,12,37,.82);backdrop-filter:blur(16px)}
+.idbar .who{font-family:'Fraunces',serif;font-size:1.05rem;color:#fff;font-weight:400}
+.idbar .who b{font-style:italic;font-weight:500;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.idbar .pills{display:flex;flex-wrap:wrap;gap:7px;margin-left:auto}
+.idbar .pill{font-size:.66rem;letter-spacing:.06em;padding:5px 11px;border-radius:999px;background:rgba(255,143,199,.1);border:1px solid var(--line);color:var(--text-soft);white-space:nowrap}
+
+/* mobile top tabs (hidden on desktop) */
+.mobilebar{display:none}
+
+/* ===== PANELS ===== */
+.panels{padding:0}
+.panel{display:none;padding:46px 56px 30px;animation:fade .55s ease}
+.panel.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.eyebrow2{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--pink);font-weight:700;margin-bottom:14px}
+.panel h2.title{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.04;letter-spacing:-.01em;margin-bottom:8px}
+.panel h2.title em{font-style:italic;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.panel .intro{font-size:1.12rem;line-height:1.75;color:var(--text);opacity:.92;max-width:760px;margin:14px 0 8px}
+
+/* banner pull-quote */
+.banner{margin:30px 0;padding:22px 26px;border-left:3px solid;border-image:var(--grad) 1;
+  background:linear-gradient(120deg,rgba(255,143,199,.1),rgba(90,215,208,.06));border-radius:0 16px 16px 0}
+.banner p{font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;line-height:1.4;color:#fff;margin:0}
+
+h3.sec{font-family:'Fraunces',serif;font-weight:400;font-size:1.7rem;margin:40px 0 8px;color:#fff}
+h4.sub{font-size:.74rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin:30px 0 12px}
+p.body{color:var(--text-soft);margin-bottom:16px;font-size:1.08rem;line-height:1.8;max-width:760px}
+p.body b{color:#fff;font-weight:600}
+em.i{font-style:italic;color:#fff}
+
+/* two-column card row */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:24px 0}
+.bigcard{background:rgba(33,26,71,.5);border:1px solid var(--line);border-radius:20px;padding:30px;backdrop-filter:blur(8px)}
+.bigcard h3{font-family:'Fraunces',serif;font-weight:400;font-size:1.5rem;color:#fff;margin-bottom:14px}
+.bigcard p{color:var(--text-soft);font-size:1rem;margin-bottom:13px}
+
+/* BUSINESS callout box */
+.bizbox{margin:26px 0;padding:26px 30px;border-radius:18px;border:1px solid var(--biz-line);
+  background:radial-gradient(ellipse at top left,rgba(255,143,199,.14),rgba(155,109,255,.05) 60%),rgba(33,20,55,.55)}
+.bizbox .tag{font-size:.92rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--pink);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.bizbox p{color:var(--text-soft);font-size:1.06rem;line-height:1.75;margin-bottom:12px}
+.bizbox p:last-child{margin-bottom:0}
+.bizbox p b{color:#fff}
+
+/* IN PRACTICE list */
+.practice{margin:24px 0;padding:26px 30px;border-radius:18px;border:1px solid var(--line);background:rgba(28,22,64,.4)}
+.practice .tag{font-size:.92rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.practice ul{list-style:none}
+.practice li{position:relative;padding:16px 0 16px 30px;border-bottom:1px solid rgba(255,255,255,.06);color:var(--text-soft);font-size:1.05rem;line-height:1.7}
+.practice li:last-child{border-bottom:none}
+.practice li::before{content:"→";position:absolute;left:0;top:16px;color:var(--pink);font-weight:700}
+.practice li b{color:#fff;font-weight:600;display:block;margin-bottom:4px;font-size:1.08rem}
+.practice li b+br{display:none}
+.practice.stop li::before{content:"⛔";font-size:.95rem}
+.practice.start li::before{content:"✨";font-size:.95rem}
+
+/* spark bullets */
+ul.spark{list-style:none;margin:6px 0 18px;max-width:820px}
+ul.spark li{position:relative;padding-left:28px;margin-bottom:12px;color:var(--text-soft);font-size:1.05rem;line-height:1.7}
+ul.spark li::before{content:"✦";position:absolute;left:0;top:1px;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-size:.85rem}
+ul.spark li b{color:#fff;font-weight:600}
+ol.steps{list-style:none;counter-reset:s;margin:6px 0 18px;max-width:820px}
+ol.steps li{position:relative;padding-left:44px;margin-bottom:13px;color:var(--text-soft);font-size:1.02rem}
+ol.steps li b{color:#fff}
+ol.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:-1px;width:28px;height:28px;border-radius:50%;background:rgba(255,143,199,.12);border:1px solid var(--line);color:var(--pink);font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center}
+
+/* sub-tabs */
+.subtabs{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 26px;padding:7px;border-radius:16px;background:rgba(28,22,64,.5);border:1px solid var(--line);width:fit-content;max-width:100%}
+.subtab{font-family:'Outfit',sans-serif;font-size:.85rem;font-weight:500;color:var(--text-soft);background:transparent;border:none;padding:9px 18px;border-radius:11px;cursor:pointer;transition:all .25s;display:flex;align-items:center;gap:7px}
+.subtab:hover{color:#fff}
+.subtab.active{background:var(--grad);color:#1a1330;font-weight:600}
+.subpanel{display:none;animation:fade .4s ease}
+.subpanel.active{display:block}
+
+/* expandable */
+.exp{border:1px solid var(--line);border-radius:16px;margin:12px 0;overflow:hidden;background:rgba(33,26,71,.4)}
+.exp summary{cursor:pointer;padding:18px 22px;font-weight:600;color:#fff;list-style:none;display:flex;align-items:center;gap:14px;transition:background .25s;font-size:1.05rem}
+.exp summary::-webkit-details-marker{display:none}
+.exp summary:hover{background:rgba(255,143,199,.07)}
+.exp summary .pl{margin-left:auto;flex:0 0 auto;width:28px;height:28px;border-radius:50%;background:rgba(255,143,199,.12);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--pink);font-size:1.2rem;transition:transform .3s}
+.exp[open] summary .pl{transform:rotate(45deg)}
+.exp summary .meta{font-size:.72rem;color:var(--muted);font-weight:400;margin-left:8px}
+.exp .inner{padding:2px 22px 22px;color:var(--text-soft)}
+.exp .inner h5{color:var(--teal);font-size:.92rem;letter-spacing:.12em;text-transform:uppercase;margin:18px 0 8px}
+.exp .inner p{margin-bottom:12px;font-size:1.04rem;line-height:1.75}
+.exp .inner p b{color:#fff}
+.exp .inner ul{list-style:none;margin:6px 0 10px}
+.exp .inner ul li{position:relative;padding-left:22px;margin-bottom:9px;font-size:1rem}
+.exp .inner ul li::before{content:"✦";position:absolute;left:0;color:var(--pink);font-size:.8rem}
+
+/* mantra / quote boxes */
+.mantra{text-align:center;background:var(--biz-grad);border:1px solid var(--biz-line);border-radius:18px;padding:26px;margin:24px 0}
+.mantra .tag{font-size:.88rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px}
+.mantra .txt{font-family:'Fraunces',serif;font-style:italic;font-size:1.2rem;color:#fff}
+.feel{background:linear-gradient(120deg,rgba(155,109,255,.14),rgba(90,215,208,.1));border:1px solid var(--line);border-radius:16px;padding:22px 26px;margin:18px 0;font-family:'Fraunces',serif;font-style:italic;font-size:1.1rem;line-height:1.5;color:#f0e8ff}
+
+/* chips / tags */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0 6px}
+.chips .c{font-size:.85rem;padding:7px 15px;border-radius:999px;background:rgba(255,143,199,.08);border:1px solid var(--biz-line);color:var(--text-soft)}
+
+/* cardgrid */
+.cardgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px;margin:22px 0}
+.minicard{background:rgba(33,26,71,.5);border:1px solid var(--line);border-radius:16px;padding:22px;transition:transform .3s,border-color .3s}
+.minicard:hover{transform:translateY(-5px);border-color:var(--pink)}
+.minicard .ix{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);font-weight:700}
+.minicard .nm{font-family:'Fraunces',serif;font-size:1.3rem;color:#fff;margin:6px 0 6px}
+.minicard .ds{font-size:.92rem;color:var(--text-soft)}
+
+/* before/after + swap */
+.ba,.swap{display:grid;grid-template-columns:1fr 1fr;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:22px 0;max-width:900px}
+.ba .h,.swap .h{padding:13px 18px;font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase}
+.ba .h.b{background:rgba(155,109,255,.16);color:var(--violet)}
+.ba .h.a{background:linear-gradient(120deg,rgba(255,143,199,.2),rgba(90,215,208,.16));color:var(--pink)}
+.swap .h.i{background:rgba(155,109,255,.16);color:var(--violet)}
+.swap .h.s{background:linear-gradient(120deg,rgba(255,216,155,.18),rgba(255,143,199,.16));color:var(--gold)}
+.ba .c,.swap .c{padding:13px 18px;font-size:.95rem;color:var(--text-soft);border-top:1px solid var(--line)}
+.ba .c.left,.swap .c.left{border-right:1px solid var(--line)}
+.swap .c.say{font-style:italic;color:#f2ebff}
+
+/* funnel */
+.funnel{display:flex;flex-direction:column;gap:10px;margin:22px 0;max-width:880px}
+.fstep{background:rgba(33,26,71,.5);border:1px solid var(--line);border-left:3px solid;border-image:var(--grad) 1;border-radius:0 14px 14px 0;padding:16px 20px}
+.fstep .l{font-weight:700;color:#fff;font-size:.98rem;margin-bottom:3px}
+.fstep .d{font-style:italic;color:var(--text-soft);font-size:.92rem}
+
+/* revenue */
+.rev{background:rgba(33,26,71,.5);border:1px solid var(--biz-line);border-radius:16px;padding:22px 26px;margin:16px 0;max-width:760px}
+.rev .rt{font-family:'Fraunces',serif;font-size:1.2rem;color:#fff;margin-bottom:12px}
+.rev .line{color:var(--text-soft);margin-bottom:7px;font-size:.98rem;display:flex;justify-content:space-between;gap:16px;border-bottom:1px dashed rgba(255,255,255,.08);padding-bottom:7px}
+.rev .line span:last-child{color:#fff;white-space:nowrap}
+.rev .total{color:#fff;font-weight:700;margin-top:10px;font-size:1.1rem;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+/* formula */
+.formula{margin:18px 0;max-width:880px}
+.formula .step{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.06)}
+.formula .step:last-child{border-bottom:none}
+.formula .lab{display:inline-block;font-weight:700;letter-spacing:.1em;color:var(--violet);font-size:.78rem;margin-bottom:6px}
+.formula .ex{font-style:italic;color:var(--gold)}
+
+/* prompt */
+.prompt{background:rgba(28,22,64,.5);border:1px solid var(--line);border-radius:16px;padding:22px;margin:16px 0;max-width:880px}
+.prompt .pt{display:flex;align-items:center;gap:8px;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:12px}
+.prompt .ptext{font-style:italic;color:#f0e8ff;background:rgba(155,109,255,.08);border-radius:12px;padding:16px 18px;margin-bottom:14px;font-size:1rem;line-height:1.55}
+.prompt button{font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;color:#1a1330;background:var(--grad);border:none;padding:9px 20px;border-radius:999px;cursor:pointer;transition:transform .25s}
+.prompt button:hover{transform:translateY(-2px)}
+.prompt button.copied{background:var(--teal)}
+
+/* whole chart numbered */
+.bignum{display:flex;gap:22px;margin:28px 0;align-items:flex-start}
+.bignum .n{font-family:'Fraunces',serif;font-size:2.4rem;line-height:1;color:transparent;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;flex:0 0 auto;opacity:.8}
+.bignum .bd h3{font-family:'Fraunces',serif;font-weight:400;font-size:1.4rem;color:#fff;margin-bottom:8px}
+.bignum .bd p{color:var(--text-soft);font-size:1rem}
+
+/* CTA + footer */
+.cta{text-align:center;margin:50px 0 10px;padding:50px 30px;background:var(--biz-grad);border:1px solid var(--biz-line);border-radius:24px}
+.cta h3{font-family:'Fraunces',serif;font-weight:300;font-size:2.3rem;margin-bottom:12px}
+.cta p{color:var(--text-soft);max-width:560px;margin:0 auto 26px}
+.cta a{display:inline-block;font-weight:600;color:#1a1330;background:var(--grad);padding:15px 36px;border-radius:999px;text-decoration:none;transition:transform .3s}
+.cta a:hover{transform:translateY(-3px)}
+footer{text-align:center;padding:36px 24px 10px;color:var(--muted);font-size:.84rem}
+footer .sig{font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+
+/* bodygraph block */
+.bg-wrap{display:flex;flex-wrap:wrap;gap:30px;align-items:center;margin:26px 0;
+  background:rgba(28,22,64,.4);border:1px solid var(--line);border-radius:20px;padding:26px 30px}
+.bg-svg{flex:0 0 auto}
+.bg-legend{font-size:.92rem;color:var(--text-soft);max-width:340px;flex:1 1 240px}
+.bg-legend h4{font-family:'Fraunces',serif;font-weight:400;font-size:1.25rem;color:#fff;margin-bottom:12px}
+.bg-legend .row{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+.bg-legend .sw{width:16px;height:16px;border-radius:5px;flex:0 0 auto;margin-top:3px}
+.bg-legend .sw.def{background:var(--grad)}
+.bg-legend .sw.undef{background:transparent;border:1.5px solid var(--pink)}
+.bg-legend .row b{color:#fff;font-weight:600}
+.bg-legend .note{margin-top:6px;font-size:.8rem;color:var(--muted)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:980px){
+  .shell{flex-direction:column}
+  .sidebar{display:none}
+  .mobilebar{display:block;position:sticky;top:0;z-index:60;background:rgba(16,11,33,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+  .mobilebar .mbrand{display:flex;align-items:center;gap:10px;padding:12px 18px 6px}
+  .mobilebar .mbrand .logo{width:32px;height:32px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:1rem}
+  .mobilebar .mbrand .t{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#fff}
+  .mobilebar .mwho{font-family:'Fraunces',serif;font-size:1rem;line-height:1.4;color:#fff;padding:2px 18px 10px}
+  .mobilebar .mwho b{font-style:italic;font-weight:500;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .mtabs{display:flex;gap:6px;overflow-x:auto;padding:0 14px 12px;scrollbar-width:none}
+  .mtabs::-webkit-scrollbar{display:none}
+  .mtab{flex:0 0 auto;font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:500;color:var(--text-soft);background:rgba(255,143,199,.06);border:1px solid var(--line);padding:8px 14px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:all .25s}
+  .mtab.active{background:var(--grad);color:#1a1330;font-weight:600;border-color:transparent}
+  /* hide the in-content identity bar on mobile (shown in mobilebar instead) */
+  .idbar{display:none}
+  .panel{padding:30px 22px 20px}
+  .duo{grid-template-columns:1fr}
+  .ba,.swap{grid-template-columns:1fr}
+  .ba .c.left,.swap .c.left{border-right:none}
+  .bg-wrap{padding:20px}
+  /* page sub-tabs become a dropdown on mobile */
+  .subtabs{display:none}
+  .subnav-select{display:block}
+}
+@media(max-width:560px){
+  .panel h2.title{font-size:1.9rem}
+  .banner p{font-size:1.1rem}
+}
+/* sub-tab dropdown (mobile only) */
+.subnav-select{display:none;position:relative;margin:8px 0 24px;max-width:100%}
+.subnav-select select{
+  -webkit-appearance:none;appearance:none;width:100%;
+  font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;
+  color:#1a1330;background:var(--grad);border:none;
+  padding:14px 44px 14px 18px;border-radius:14px;cursor:pointer;
+  box-shadow:0 8px 22px -10px rgba(155,109,255,.6)}
+.subnav-select::after{content:"▾";position:absolute;right:18px;top:50%;transform:translateY(-50%);color:#1a1330;font-size:1.1rem;pointer-events:none;font-weight:700}
+.subnav-select select option{background:#fff;color:#1a1326}
+.toTop{position:fixed;bottom:22px;right:22px;width:46px;height:46px;border-radius:50%;background:var(--grad);border:none;color:#1a1330;font-size:1.1rem;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:70;box-shadow:0 10px 26px -10px rgba(255,143,199,.7)}
+.toTop.show{opacity:1;pointer-events:auto}.toTop:hover{transform:translateY(-4px)}
+
+/* ============================================================
+   LIGHT READING THEME — main content area only
+   White → light-purple gradient panels with black text.
+   Sidebar + idbar stay dark for contrast.
+   ============================================================ */
+.content{background:linear-gradient(160deg,#ffffff 0%,#f7f3ff 38%,#efe7fb 100%)}
+.panel{color:#1a1326}
+/* headings */
+.panel .eyebrow2{color:#8a3fb0}
+.panel h2.title{color:#1a1326}
+.panel h2.title em{background:linear-gradient(110deg,#b3479a,#7a4fd0 55%,#2f8f88);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.panel .intro{color:#241b33;opacity:1}
+.panel h3.sec{color:#241032}
+.panel h4.sub{color:#1f8a82}
+/* body copy */
+.panel p.body{color:#2a2236}
+.panel p.body b{color:#000}
+.panel em.i{color:#1a1326}
+/* spark + step bullets */
+.panel ul.spark li{color:#2a2236}
+.panel ul.spark li b{color:#000}
+.panel ul.spark li::before{background:linear-gradient(110deg,#b3479a,#7a4fd0);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.panel ol.steps li{color:#2a2236}
+.panel ol.steps li b{color:#000}
+.panel ol.steps li::before{background:rgba(138,63,176,.12);border-color:rgba(138,63,176,.3);color:#8a3fb0}
+/* banner pull-quote */
+.panel .banner{background:linear-gradient(120deg,rgba(179,71,154,.12),rgba(90,215,208,.1));border-radius:0 16px 16px 0}
+.panel .banner p{color:#241032}
+/* big cards */
+.panel .bigcard{background:rgba(255,255,255,.7);border-color:rgba(138,63,176,.18);box-shadow:0 8px 24px -16px rgba(80,40,120,.4)}
+.panel .bigcard h3{color:#241032}
+.panel .bigcard p{color:#2a2236}
+/* biz callout */
+.panel .bizbox{background:radial-gradient(ellipse at top left,rgba(179,71,154,.1),rgba(122,79,208,.05) 60%),rgba(255,255,255,.72);border-color:rgba(179,71,154,.32)}
+.panel .bizbox .tag{color:#b3479a}
+.panel .bizbox p{color:#2a2236}
+.panel .bizbox p b{color:#000}
+/* practice list */
+.panel .practice{background:rgba(255,255,255,.66);border-color:rgba(138,63,176,.16)}
+.panel .practice li{color:#2a2236;border-bottom-color:rgba(40,20,60,.1)}
+.panel .practice li b{color:#000}
+.panel .practice .tag{color:#9a6b00}
+.panel .practice.stop .tag{color:#b3479a}
+/* expandables */
+.panel .exp{background:rgba(255,255,255,.66);border-color:rgba(138,63,176,.18)}
+.panel .exp summary{color:#1a1326}
+.panel .exp summary:hover{background:rgba(179,71,154,.06)}
+.panel .exp summary .pl{background:rgba(138,63,176,.12);border-color:rgba(138,63,176,.3);color:#8a3fb0}
+.panel .exp summary .meta{color:#6b5a82}
+.panel .exp .inner{color:#2a2236}
+.panel .exp .inner h5{color:#1f8a82}
+.panel .exp .inner p{color:#2a2236}
+.panel .exp .inner p b{color:#000}
+.panel .exp .inner ul li{color:#2a2236}
+.panel .exp .inner ul li::before{color:#b3479a}
+/* mantra / feel boxes */
+.panel .mantra{background:linear-gradient(120deg,rgba(179,71,154,.1),rgba(122,79,208,.07));border-color:rgba(179,71,154,.3)}
+.panel .mantra .tag{color:#9a6b00}
+.panel .mantra .txt{color:#241032}
+.panel .feel{background:linear-gradient(120deg,rgba(122,79,208,.1),rgba(90,215,208,.1));border-color:rgba(138,63,176,.2);color:#241032}
+/* chips */
+.panel .chips .c{background:rgba(179,71,154,.08);border-color:rgba(179,71,154,.3);color:#2a2236}
+/* mini cards */
+.panel .minicard{background:rgba(255,255,255,.72);border-color:rgba(138,63,176,.18)}
+.panel .minicard:hover{border-color:#b3479a}
+.panel .minicard .ix{color:#1f8a82}
+.panel .minicard .nm{color:#241032}
+.panel .minicard .ds{color:#2a2236}
+/* before/after + swap tables */
+.panel .ba,.panel .swap{border-color:rgba(138,63,176,.22)}
+.panel .ba .h.b,.panel .swap .h.i{background:rgba(122,79,208,.14);color:#6a3fc0}
+.panel .ba .h.a{background:linear-gradient(120deg,rgba(179,71,154,.16),rgba(90,215,208,.14));color:#b3479a}
+.panel .swap .h.s{background:linear-gradient(120deg,rgba(255,200,90,.2),rgba(179,71,154,.14));color:#9a6b00}
+.panel .ba .c,.panel .swap .c{color:#2a2236;border-top-color:rgba(138,63,176,.16)}
+.panel .ba .c.left,.panel .swap .c.left{border-right-color:rgba(138,63,176,.16)}
+.panel .swap .c.say{color:#1a1326}
+/* revenue cards */
+.panel .rev{background:rgba(255,255,255,.7);border-color:rgba(179,71,154,.3)}
+.panel .rev .rt{color:#241032}
+.panel .rev .line{color:#2a2236;border-bottom-color:rgba(40,20,60,.12)}
+.panel .rev .line span:last-child{color:#000}
+.panel .rev .total{background:linear-gradient(110deg,#b3479a,#7a4fd0);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+/* formula */
+.panel .formula .step{border-bottom-color:rgba(40,20,60,.1)}
+.panel .formula .lab{color:#6a3fc0}
+.panel .formula .ex{color:#9a6b00}
+/* prompt box */
+.panel .prompt{background:rgba(255,255,255,.7);border-color:rgba(138,63,176,.2)}
+.panel .prompt .pt{color:#1f8a82}
+.panel .prompt .ptext{background:rgba(122,79,208,.08);color:#241032}
+/* CTA + footer */
+.panel .cta{background:linear-gradient(120deg,rgba(179,71,154,.12),rgba(122,79,208,.08));border-color:rgba(179,71,154,.3)}
+.panel .cta h3{color:#241032}
+.panel .cta p{color:#2a2236}
+.panel footer{color:#6b5a82}
+/* sub-tabs on light bg */
+.panel .subtabs{background:rgba(255,255,255,.66);border-color:rgba(138,63,176,.2)}
+.panel .subtab{color:#4a3a5e}
+.panel .subtab:hover{color:#1a1326}
+.panel .subtab.active{color:#fff}
+/* tab instruction hint */
+.tabhint{display:flex;align-items:center;gap:9px;margin:18px 0 4px;font-size:.95rem;font-weight:600;color:#8a3fb0}
+.tabhint .ar{font-size:1.1rem;line-height:1}
+@media(max-width:980px){
+  .content{background:linear-gradient(170deg,#ffffff 0%,#f5f0ff 45%,#ece3fa 100%)}
+}
+</style>
+</head>
+<body>
+<div class="cosmos"></div>
+<div class="stars" id="stars"></div>
+<div class="grid-overlay"></div>
+
+<!-- MOBILE TOP BAR -->
+<div class="mobilebar">
+  <div class="mbrand"><div class="logo">✦</div><div class="t">Everheart · Blueprint</div></div>
+  <div class="mwho">Amala — you're a <b>Projector 2/4</b>, Splenic Authority, Right Angle Cross of Rulership ✦</div>
+  <div class="mtabs" id="mtabs"></div>
+</div>
+
+<div class="shell">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand"><div class="logo">✦</div><div class="bt">Everheart <span>Blueprint</span></div></div>
+    <div class="side-name">Amala Christie Eberhard</div>
+    <div class="side-sub">Human Design Business Blueprint</div>
+    <nav><ul class="navlist" id="navlist"></ul></nav>
+    <a class="side-cta" href="https://everheartconsulting.com" target="_blank" rel="noopener">Everheart Consulting ✦</a>
+  </aside>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <div class="idbar">
+      <div class="who">Amala — you're a <b>Projector 2/4</b>, Splenic Authority, Right Angle Cross of Rulership ✦</div>
+    </div>
+    <main class="panels" id="panels"></main>
+  </div>
+</div>
+
+<button class="toTop" id="toTop" aria-label="Back to top">↑</button>
+
+<script>
+/* starfield */
+(function(){const c=document.getElementById('stars');const n=window.innerWidth<700?50:120;
+for(let i=0;i<n;i++){const s=document.createElement('div');s.className='star';const z=Math.random()*2.1+.5;
+s.style.width=s.style.height=z+'px';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';
+s.style.setProperty('--d',(Math.random()*4+2.5)+'s');s.style.animationDelay=(Math.random()*5)+'s';
+if(Math.random()>.7)s.style.background=Math.random()>.5?'#ff8fc7':'#5ad7d0';c.appendChild(s);}})();
+
+/* ===== BODYGRAPH GENERATOR ===== */
+function bodygraph(highlight,w,h){
+  const defined=["head","ajna","will","g","spleen"];
+  const hi=new Set(highlight||[]);
+  w=w||220;h=h||348;
+  const cx=120;
+  const C={
+    head:{type:"tri-up",x:cx,y:26,w:50,h:32},
+    ajna:{type:"tri-dn",x:cx,y:72,w:50,h:32},
+    throat:{type:"rect",x:cx,y:126,w:46,h:38},
+    g:{type:"diam",x:cx,y:196,w:54,h:54},
+    will:{type:"tri-rt",x:172,y:188,w:30,h:34},
+    sacral:{type:"rect",x:cx,y:266,w:46,h:38},
+    spleen:{type:"tri-lf",x:50,y:262,w:34,h:46},
+    solar:{type:"tri-rt2",x:190,y:262,w:34,h:46},
+    root:{type:"rect",x:cx,y:330,w:50,h:38}
+  };
+  const A={head:[cx,42],ajna:[cx,56],throat:[cx,107],g:[cx,170],will:[157,188],
+    sacral:[cx,247],spleen:[67,262],solar:[173,262],root:[cx,311]};
+  function shape(c,k){
+    const isDef=defined.includes(k),isHi=hi.has(k);
+    let fill,stroke,sw;
+    if(isDef){fill=isHi?"url(#bgHot)":"url(#bgGrad)";stroke="none";sw=0;}
+    else{fill="rgba(255,255,255,0.02)";stroke=isHi?"#ff8fc7":"rgba(255,180,225,0.42)";sw=isHi?3:2;}
+    const op=isHi?1:(isDef?0.9:1);
+    const x=c.x,y=c.y,ww=c.w,hh=c.h;let el="";
+    if(c.type==="tri-up")el=`<polygon points="${x},${y-hh/2} ${x+ww/2},${y+hh/2} ${x-ww/2},${y+hh/2}"`;
+    else if(c.type==="tri-dn")el=`<polygon points="${x},${y+hh/2} ${x+ww/2},${y-hh/2} ${x-ww/2},${y-hh/2}"`;
+    else if(c.type==="diam")el=`<polygon points="${x},${y-hh/2} ${x+ww/2},${y} ${x},${y+hh/2} ${x-ww/2},${y}"`;
+    else if(c.type==="tri-rt"||c.type==="tri-rt2")el=`<polygon points="${x-ww/2},${y-hh/2} ${x+ww/2},${y} ${x-ww/2},${y+hh/2}"`;
+    else if(c.type==="tri-lf")el=`<polygon points="${x+ww/2},${y-hh/2} ${x-ww/2},${y} ${x+ww/2},${y+hh/2}"`;
+    else el=`<rect x="${x-ww/2}" y="${y-hh/2}" width="${ww}" height="${hh}" rx="5"`;
+    return `${el} fill="${fill}" stroke="${stroke}" stroke-width="${sw}" opacity="${op}"/>`;
+  }
+  const lines=[["head","ajna"],["ajna","throat"],["throat","g"],["throat","will"],["throat","solar"],
+    ["g","sacral"],["g","spleen"],["will","g"],["sacral","root"],["sacral","spleen"],["sacral","solar"],["spleen","root"],["solar","root"]];
+  let chan="";lines.forEach(p=>{const a=A[p[0]],b=A[p[1]];chan+=`<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="rgba(255,255,255,0.09)" stroke-width="1.5"/>`;});
+  let shapes="";Object.keys(C).forEach(k=>shapes+=shape(C[k],k));
+  return `<svg width="${w}" height="${h}" viewBox="0 0 240 380" xmlns="http://www.w3.org/2000/svg" aria-label="Body​graph">
+   <defs>
+     <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8fc7"/><stop offset="0.5" stop-color="#9b6dff"/><stop offset="1" stop-color="#5ad7d0"/></linearGradient>
+     <linearGradient id="bgHot" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd89b"/><stop offset="0.5" stop-color="#ff8fc7"/><stop offset="1" stop-color="#ff6fb0"/></linearGradient>
+   </defs>${chan}${shapes}</svg>`;
+}
+function bgBlock(highlight,legendHtml){
+  return `<div class="bg-wrap"><div class="bg-svg">${bodygraph(highlight)}</div><div class="bg-legend">${legendHtml}</div></div>`;
+}
+
+const CONTENT={};
+</script>
+<script>
+/* 01 START HERE */
+CONTENT.start=`
+<div class="eyebrow2">Start Here ✦</div>
+<h2 class="title">What Is Human Design <em>(And Why It Changes How You Do Business)</em></h2>
+<p class="intro">Amala — this is your complete energetic business map. How you're wired, what you're built for, and how to actually use all of it to build a business that brings the right people to you. Everything after this is built specifically for you, from your chart, your intake, and the work you already do.</p>
+<div class="banner"><p>"You built the whole successful life. Now something essential is asking to be lived. This blueprint shows you the business that actually fits who you are."</p></div>
+<p class="body">Okay, quick story before we dive in. Human Design is basically a map of how you're wired. It's worked out from your birthday, your birth time, and where you were born, and it mashes together a few old systems with a bit of physics. Sounds a little out there, I know. But here's the thing: it's not a personality quiz, it's not your horoscope, and it's definitely not a list of who you should try to be. It's a map of who you already are.</p>
+<p class="body">And what it gives you is the stuff most people spend years trying to figure out the hard way. How your energy actually works. How to make decisions you won't kick yourself for later. How you're built to pull the right people toward you instead of chasing them all over the internet. Most of us have spent ages following advice made for somebody else entirely. We pushed when we were built to wait. We forced ourselves to "show up" in ways that left us flat. We copied strategies that felt hollow, because, surprise, they were never made for us.</p>
+<p class="body">For business, this is huge. Almost all business advice is built for one type of person with one type of energy. If that's not you, and for most thoughtful, deep-feeling people it really isn't, then the standard playbook will always feel a bit like wearing shoes a size too small. You can walk in them. You'll just always notice. This blueprint throws out the generic playbook and shows you what your business looks like when it's actually built for you.</p>
+<p class="body">Amala, here's where it gets good. You told me you work with people who've built the whole successful life, the career, the title, all of it, and are quietly sitting there going "wait, is this it?" That gap between looking successful and feeling whole? That's your whole world. And here's the plot twist: that gap isn't just your clients' thing. It's yours too. You smashed through every outer ceiling, hit the money goals, and then bumped into the quieter inner ones nobody warns you about. Human Design is about to show you that the work you feel pulled toward is the exact work you were built for, and that the reason building a business has felt like a slog is that you've been doing it against your wiring instead of with it. Let's fix that. 🪄</p>
+<div class="bizbox">
+  <div class="tag">💼 What This Means For Your Business</div>
+  <p>Your business doesn't need you to become someone louder, busier, or more "out there." It needs you to stop running on a strategy built for a different kind of person. <b>Everything in this blueprint is built around one idea: you're a Projector, and Projectors win by being recognised and invited, not by chasing.</b> When you build with that instead of against it, the right clients start finding you, the work gets deeper, and the exhaustion lifts.</p>
+</div>
+<div class="practice">
+  <div class="tag">✨ In Practice</div>
+  <ul>
+    <li>Read this blueprint once all the way through, then come back to one tab at a time. It's built to be returned to, not consumed once.</li>
+    <li>Notice every place your current business runs on hustle logic (post daily, chase leads, fill every hour). Those are the spots costing you the most energy.</li>
+    <li><b>Treat your own story as data, not a side note.</b> The proving, the inner ceilings, the healing — that's your positioning, your marketing, and your differentiation all at once.</li>
+  </ul>
+</div>`;
+
+/* 02 WELCOME */
+CONTENT.welcome=`
+<div class="eyebrow2">Welcome to Your Blueprint ✦</div>
+<h2 class="title">A Letter <em>To You</em></h2>
+<div class="banner"><p>"From the outside, your life looks like the brochure. What this blueprint is for is the part the brochure never shows."</p></div>
+<p class="body">Amala, let's talk about you for a second. You grew up Swiss-Nigerian in a world that had already decided who you were going to be, took one look at that script, and went "yeah, no." By your late twenties you were earning serious money in corporate IT and finance. No fancy degree. No connections handing you favours. Just a stubborn refusal to let anyone else's assumptions run your life.</p>
+<p class="body">And then you found the thing nobody puts on a motivational poster. When you've climbed over every outer wall, you meet the inner ones. They're quieter. Sneakier. Honestly more interesting to take apart. That sent you into eleven years of deep inner work, and you didn't just "shift your mindset." You healed from something doctors had stamped permanent. That's not a small thing. That's the whole thing.</p>
+<p class="body">Now you work with executives, founders and leaders who are living their own version of that. People who've won by every scoreboard and are quietly ready to find out what's on the other side of all that proving. You said it perfectly in your intake: they don't have to choose between outer success and inner truth, and they never did. You help them close that gap. The thing you give them is coherence. Fancy word, simple meaning: knowing who you are, knowing what you want, and actually living it instead of performing it.</p>
+<p class="body">So here's the gap you're standing in right now. You've got three genuinely great offers: your 1:1 Transition Consulting, your Quantum Journey Hypnosis, and The Coherence Code, your twelve-week group programme launching later in 2026. You've got a gorgeous three-year vision: work from anywhere, get invited into companies and wellness spaces, keep a small handful of deep one-on-one clients, and have people actually travel to be in the room with you. What you don't have yet is the bridge between how deep your work goes and a business that brings the right people to you, steadily, without draining you dry. Good news: as a Projector, that bridge isn't built by doing more. It's built by being seen and invited in. This whole blueprint is the how. 💫</p>
+<div class="bizbox">
+  <div class="tag">💼 What This Means For Your Business</div>
+  <p>That vision isn't a fantasy to caveat. It's a near-perfect description of a Projector business running correctly: fewer, deeper clients; income that grows through recognition and invitation; a gathering offer that scales your energy instead of draining it. <b>The gap between where you are and that vision isn't effort. It's alignment.</b> You don't need to push harder. You need to be recognised more, and to build the few structures that let invitations turn into income.</p>
+</div>
+<h3 class="sec">What This Blueprint Does</h3>
+<ul class="spark">
+<li>Shows you how your Projector energy, your gut-feel Splenic Authority, your "wait to be invited" strategy, and your 2/4 profile shape how you work, attract clients, make calls, and protect your energy</li>
+<li>Cracks open your Right Angle Cross of Rulership so you get the deeper purpose already running through your 1:1 work, your hypnosis, and The Coherence Code</li>
+<li>Explains your open centres, the reason you can read a room full of high achievers like a book they didn't know they were handing you</li>
+<li>Points out where your current positioning is already great, and where the right people just need a clearer signal to find you faster</li>
+<li>Gives you a specific low-ticket offer, program structures, and money paths built for how a Projector actually earns</li>
+<li>Maps a real path to steady ten to twenty thousand a month, no daily posting, no hustle, no burning the energy you need for the deep stuff</li>
+</ul>
+<h3 class="sec">What This Is NOT</h3>
+<p class="body">This is not generic advice you could photocopy for any coach. It's not a fluffy Human Design reading with zero practical use. It's not a magic button that builds your business while you nap. And it's not a done-for-you shortcut that skips the part where you show up as the person clients are actually coming for. Your work is intimate and precise. No document can do that bit for you. What this can do is make sure every drop of energy you pour into your business goes where your design actually pays you back, instead of where the internet keeps yelling at you to push.</p>
+<h3 class="sec">Your Anchor Statements</h3>
+<p class="body">Come back to these when your brain gets loud.</p>
+<div class="practice">
+  <div class="tag">🧭 When Your Brain Gets Loud</div>
+  <ul>
+    <li><b>When you feel the pressure to post more and hustle harder</b> remember you're a Projector. Your power is being recognised, not being everywhere. One right person really seeing you beats a hundred posts shouted into the void.</li>
+    <li><b>When you're tempted to chase a client or pitch to be picked</b> wait for the invite. The work that's truly yours comes to you. Forcing it is the express lane to feeling bitter.</li>
+    <li><b>When a decision feels urgent and your head is spinning</b> drop into your gut. Your body already knows. The first quiet "yes" or "nope" is the real one. The longer you argue with it, the further you wander off.</li>
+    <li><b>When you wonder if your own story belongs in your business</b> it's literally why people will trust you. You healed what was called permanent. Nobody can copy that.</li>
+    <li><b>When you feel guilty for needing alone time before you engage</b> that's your 2nd line hermit doing its job. The retreat is where your genius recharges. Guard it.</li>
+    <li><b>When you worry The Coherence Code won't fill</b> your 4th line grows through people you know. The right folks are one warm intro away. Build it through who already loves you.</li>
+    <li><b>When you feel bitter, drained, or invisible</b> that's your warning light. It almost always means you've been pouring energy somewhere you weren't actually invited. Pull back and reset.</li>
+    <li><b>When a corporate or wellness door opens and you feel you "should" say yes</b> check your gut first. An open door isn't the same as a real invitation.</li>
+    <li><b>When you're not sure how to price the deep work</b> you're not charging for an hour on a call. You're charging for the coherence on the other side. Price the change, not the clock.</li>
+    <li><b>When you wonder if the work-from-anywhere, pick-your-clients life is even realistic</b> go read your Path to 10K to 20K Months. The numbers come from your real offers. It's closer than it feels.</li>
+  </ul>
+</div>
+<div class="feel">Let's begin. 🌙</div>`;
+</script>
+<script>
+/* 03 YOUR DESIGN */
+CONTENT.design=`
+<div class="eyebrow2">Your Human Design For Business ✦</div>
+<h2 class="title">How You're <em>Wired</em></h2>
+<p class="intro">This section breaks down how you're wired to work, sell, show up, and build. You're a Projector with a 2/4 profile and Splenic Authority. Read it one tab at a time — Energy Type, Strategy, Authority, then Profile.</p>
+<div class="tabhint"><span class="ar">👇</span> Select each tab below to read that part</div>
+<div class="subtabs" data-group="design">
+  <button class="subtab active" data-sub="d-energy">✦ Energy Type</button>
+  <button class="subtab" data-sub="d-strategy">◆ Strategy</button>
+  <button class="subtab" data-sub="d-authority">★ Authority</button>
+  <button class="subtab" data-sub="d-profile">✧ Profile</button>
+</div>
+<div class="subnav-select" data-group="design">
+  <select onchange="selectSub(this.value)">
+    <option value="d-energy">✦ Energy Type</option>
+    <option value="d-strategy">◆ Strategy</option>
+    <option value="d-authority">★ Authority</option>
+    <option value="d-profile">✧ Profile</option>
+  </select>
+</div>
+
+<div class="subpanel active" id="sub-d-energy">
+  <h3 class="sec">Energy Type: Projector (The Seer) 👁️</h3>
+  <div class="banner"><p>"You're not the human bulldozer who just does and does forever. You're the one who looks at a person and instantly sees the thing nobody's naming."</p></div>
+  <p class="body">Your energy type is basically the nature of your fuel. How it moves, how it refills, how it's meant to meet the world. Get this right and life feels smoother. Get it wrong and everything feels like wading through wet sand, even when you're technically doing all the right things.</p>
+  <p class="body">Amala, you're a Projector. Projectors are the guides, the see-ers, the ones who clock what everyone else misses. You're not built to be the human bulldozer who just does and does and does forever. You're the one who looks at a person or a situation and instantly sees the thing nobody's naming. Your type literally has a nickname: The Seer. That's not a cute label. It's the job description. It's what happens when you sit across from some executive who has everything and still feels empty, and you see them. Fully. Usually before they can see themselves.</p>
+  <p class="body">Here's the single most important thing about being a Projector in business. You're not built to crank out energy the way hustle culture assumes everybody can. You don't have a defined Sacral, which is the bit that gives some people that endless workhorse battery. You've got something rarer instead: laser focus that goes deep in short bursts, then needs to rest. When you try to run your business like one of those nonstop people, posting constantly, chasing clients, jamming your calendar full, you crash. Not because you're weak. Because you're running a Ferrari on diesel. 🏎️</p>
+  <p class="body">Projectors win through being recognised and invited. You're not here to chase. You're here to be seen for your gift, invited in, and then to do the deep thing only you can do. This is the biggest mindset shift in your whole blueprint, so let it land: your job is not to shove your work at the world. Your job is to make your gift visible enough that the right people go "oh, I need her," and invite you in. When that happens, the work flows, the energy shows up, and that bitter, drained feeling disappears. You said you want fewer, deeper one-on-one clients and a life that's spacious instead of stuffed. That's not you being lazy or unambitious. That's the design working exactly right.</p>
+  <div class="bizbox">
+    <div class="tag">💼 What This Means For Your Business</div>
+    <p>Your vision of three or four sessions a day, four days a week, with relationships that deepen, isn't you playing small. <b>For a Projector doing deep, intimate work, that's near the top of the sustainable range, and it's the design working correctly.</b> Your income grows through being recognised by the right people and getting more selective, not through cramming in more clients. The selective, location-independent practice you described is literally what your energy type is built to produce.</p>
+  </div>
+  <div class="practice stop">
+    <div class="tag">⛔ What You Need to STOP Doing</div>
+    <ul>
+      <li><b>Building your business on volume.</b> Daily posting and nonstop visibility are made for a different energy type, and for you they drain the exact fuel you need for the deep client work.</li>
+      <li><b>Saying yes just because a door is open.</b> An open door is not an invitation. Walking through doors you weren't actually invited through is what leaves you bitter and wiped out.</li>
+      <li><b>Measuring your worth by how busy you are.</b> Three or four sessions a day, four days a week, with relationships that deepen over time? That's not doing less. That's doing it properly.</li>
+      <li><b>Pushing to be chosen.</b> Pitching, chasing gatekeepers, proving your value to people who haven't recognised it yet. That's the old proving habit, and you already know where that road dead-ends.</li>
+      <li><b>Pretending you've got unlimited energy.</b> The second you skip your rest, your work loses the exact depth people come to you for.</li>
+    </ul>
+  </div>
+  <div class="practice start">
+    <div class="tag">✨ What You Need to START Doing</div>
+    <ul>
+      <li><b>Being visible in a way that gets you recognised, not just seen.</b> A few posts that make the right person go "this woman gets something nobody else has named for me" beat daily content every time.</li>
+      <li><b>Treating every intro, referral, and discovery call as a possible invitation</b>, and waiting for the real ones instead of forcing the rest.</li>
+      <li><b>Building your week around deep bursts of work followed by actual rest.</b> Your hypnosis and 1:1 work are intense. Recovery is part of the job, not a treat.</li>
+      <li><b>Letting your story</b> the proving, the healing, the arriving — be the thing that makes people recognise you. That recognition is what turns into invitations.</li>
+      <li><b>Trusting that fewer, deeper, well-paid relationships are the goal</b>, not a sign you're slacking.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="subpanel" id="sub-d-strategy">
+  <h3 class="sec">Strategy: Wait for the Invitation 💌</h3>
+  <div class="banner"><p>"Get really good at your thing, let it be seen, then wait to be recognised and invited into what matters. When the door opens from their side, the work hits harder."</p></div>
+  <p class="body">Your strategy is just the path of least resistance for your design. For a Projector, that's waiting for the invitation. Not sitting at home twiddling your thumbs hoping the phone rings. More like: get really good at your thing, let it be seen, and then wait to be recognised and invited into what matters. The big stuff, like a new client or a corporate gig or a stage. And the small stuff, like sharing an insight with someone.</p>
+  <p class="body">This is the polar opposite of what most business coaches will scream at you. Pitch! Chase! Post offers daily! Push for the sale! For your design, that's a one-way ticket to burnout and resentment. When you force your way in, even a yes feels off. The whole thing starts on the wrong foot. But when someone recognises you and invites you in? Different planet. They're already leaning in. They already see your value. The work hits harder because the door opened from their side, not yours.</p>
+  <p class="body">Amala, your three-year vision is basically a love letter to invitation, you just didn't label it that way. People travel to be in the room. You get invited into companies and wellness spaces. The one-on-one work gets more selective. That's a Projector describing a Projector business running beautifully. The only gap is you might still feel like you have to force it all into existence. You don't. You have to make yourself easy to recognise, then get really good at spotting the right invitations and letting the wrong ones float on by.</p>
+  <div class="bizbox">
+    <div class="tag">💼 What This Means For Your Business</div>
+    <p>Your three-year vision is a love letter to invitation. People travel to be in the room. You get invited into corporations and wellness spaces. The one-on-one work gets more selective. <b>That's a Projector describing a Projector business running beautifully.</b> Your only real job between now and then is to make your gift recognisable enough that those invitations find you, and to get sharp at telling a true invitation from an empty "open door."</p>
+  </div>
+  <div class="practice">
+    <div class="tag">🌿 What This Looks Like in Real Life</div>
+    <ul>
+      <li>Someone reads your post about that quiet gap between looking successful and feeling whole, and feels completely seen. They book a discovery call. <b>That call? That's the invitation.</b> You're not there to sell. You're there to feel out whether this is a real yes on both sides.</li>
+      <li>A founder you worked with mentions you to a friend who's quietly falling apart at the top. The friend reaches out. That's the gold-standard invitation, recognition passed through someone they already trust, and it's exactly how your 4th line loves to grow.</li>
+      <li>A retreat host or a corporate wellbeing lead hears you speak and asks if you'd bring The Coherence Code into their world. Your gut lights up. That's the invitation your three-year vision is built on. Your only job between now and then is to be visible and recognisable enough for those invitations to find you.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="subpanel" id="sub-d-authority">
+  <h3 class="sec">Authority: Splenic — Your Gut Knows 🦋</h3>
+  <div class="banner"><p>"Your spleen speaks once, softly, right now. It doesn't repeat itself and it doesn't debate you. The first quiet yes or no is the real one."</p></div>
+  <p class="body">Your authority is your built-in decision-maker, the signal you can trust over the noise of your brain, the rush of the moment, and everyone's expectations. Different types decide in different ways. Yours is Splenic, and it's one of the fastest, quietest ones there is.</p>
+  <p class="body">Your spleen is your gut. Your instinct. Your in-the-moment knowing. It speaks once, softly, right now. It doesn't repeat itself and it doesn't debate you. It's that little flicker of "yes" or "mm, something's off" the instant you meet a person or an opportunity. The catch? It's so quiet and so quick that your busy, brilliant brain talks right over it. By the time you've built a whole logical case, you've usually walked straight past the answer your gut already handed you.</p>
+  <p class="body">This is so relevant to you it's almost funny. Your whole early life was proving, pushing, and out-thinking every problem. Very head-led. Your healing was, in part, learning to come back to your body and trust what it knows. In your sessions, especially your Quantum Journey Hypnosis work, you're already running on this instant gut read. You feel where to go before you can explain it. The work now is to trust that same gut in your business, not just with clients. If you've ever ignored a quiet first "no," talked yourself into a yes, and then regretted it, congratulations, you've met the cost of overriding your gut.</p>
+  <div class="bizbox">
+    <div class="tag">💼 What This Means For Your Business</div>
+    <p>Every "should I take this client, say yes to this collaboration, launch now" decision is meant to be made in your body, in the moment, not reasoned out over two weeks. <b>Overriding your gut is what's most likely to lead you into draining clients and misaligned commitments.</b> When you meet a potential client and feel instant clarity, that's your answer, even when the logic says "but the money."</p>
+  </div>
+  <div class="practice">
+    <div class="tag">🎯 How to Use This in Business</div>
+    <ul>
+      <li>When an invite, client, or opportunity shows up, catch your very first reaction. That quick flicker is your gut. That's your truth, before your brain lawyers up.</li>
+      <li>Don't "sleep on it" for two weeks. That's a different type's process, not yours. Your knowing is right now, in the moment. If you pause, pause to get quiet enough to hear your gut, not to start a debate.</li>
+      <li>On discovery calls, notice how your body feels while you talk to the person. Your gut will tell you almost instantly if this is yours to do. Trust it even when the logic says "but the money."</li>
+      <li>If something feels quietly "off" about a gig or a collab, honour it even if you can't explain it on paper. Your gut is picking up something real your brain hasn't caught yet.</li>
+      <li>Learn the difference between fear and a gut warning. Fear is loud, repetitive, and all about the future. Your gut is quiet, one-time, and about right now. Tell them apart and you'll rarely make a call you regret.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="subpanel" id="sub-d-profile">
+  <h3 class="sec">Profile: 2/4 — The Easy Breezy Genius 🌸</h3>
+  <div class="banner"><p>"You do your most astonishing work in private, and the people who experience it carry your name to the next right person."</p></div>
+  <p class="body">Your profile is two numbers. The first is your conscious line, the part of you that you feel and know. The second is your unconscious line, the part everyone else sees in you before you do. Together they shape how you learn, build, and move through life. When you live with your profile, things flow. When you fight it, everything feels heavy even when you're doing it "right." Yours is the 2/4, sometimes called the Hermit-Opportunist. Your chart calls it something better: The Easy Breezy Genius.</p>
+
+  <h4 class="sub">Line 2 — The Hermit (Your Conscious Side)</h4>
+  <p class="body">Your 2nd line is the Hermit. The 2nd line has a natural gift, something you're just plain brilliant at without studying for it. It's built in. But the 2nd line also needs real alone time. Not a luxury. A requirement. Retreat is how your genius recharges and stays sharp. You go off, do your own thing, and then get called back out when the world needs your gift.</p>
+  <p class="body">Here's the funny tension of the 2nd line. You've got a gift you can't fully see in yourself, and you need your cave, but the way you grow is by other people spotting your gift and calling you out of that cave. You can't see your own genius as clearly as everyone else can. This is exactly why a Projector with a 2nd line is constantly surprised by their effect on people. You just do your thing, and someone walks away quietly blown away. You said it yourself: people leave your work astonished not by what they achieved, but by what they found. That astonishment? That's your gift landing.</p>
+  <p class="body">The shadow of the 2nd line is hiding. Staying in the cave so long, guarding your alone time so hard, that the world never gets to call you out and recognise you. In business that looks like under-sharing, being quietly amazing in private while the right clients have no idea you exist. Amala, your gift is real and rare. The work is to let just enough of it show so the right people can come knocking.</p>
+  <details class="exp"><summary>In Business This Looks Like <span class="pl">+</span></summary>
+  <div class="inner"><ul>
+    <li>Doing your most jaw-dropping work in private, intimate sessions, and being genuinely surprised when clients call it life-changing</li>
+    <li>Needing real downtime between clients, and feeling crispy and resentful when your calendar doesn't allow it</li>
+    <li>Probably under-sharing your gift, which means fewer people get the chance to find you and invite you in</li>
+    <li>Getting pulled into your best work by other people's recognition, not by you marketing yourself to death</li>
+  </ul>
+  <h5>How to Work With This</h5><ul>
+    <li>Protect your alone time like it's sacred, because for you it is. Build your week so deep work is followed by real retreat. Your gift depends on it.</li>
+    <li>Let people tell you what your gift is, and believe them. When clients describe what they experienced, that's data about your genius. Save it. Use their words.</li>
+    <li>Share just enough publicly that the right people can recognise you. You don't need to be everywhere. You need a few clear signals that call your people in.</li>
+    <li>Stop waiting to feel "ready" before you let your gift be seen. The 2nd line basically never feels ready. Get seen anyway.</li>
+  </ul></div></details>
+
+  <h4 class="sub">Line 4 — The Opportunist (Your Unconscious Side)</h4>
+  <p class="body">Your 4th line is unconscious, so you don't always feel it running, but other people do, and it shapes how your business actually grows. The 4th line grows through relationships. Your clients, your opportunities, your invitations come through people you know and the people they know. The 4th line is warm and well-connected. It does not grow through cold strangers and shouty broadcast marketing. It grows through trust, passed from one person to the next.</p>
+  <p class="body">This matters a ton for Everheart. Your 4th line means your next ten clients are way more likely to come from a warm intro, a referral, or someone who already knows your work than from an ad or a cold funnel. Your old colleagues, your past clients who adored working with you, the wellness and corporate folks you meet, that network is your growth engine. The 4th line warms up a relationship first, and the invitation comes from inside it. You don't pitch a stranger. You nurture a connection, and the yes grows out of it.</p>
+  <p class="body">The shadow of the 4th line is staying somewhere out of loyalty or fear of letting people down, even when it's clearly done. Or jumping to the next thing before you've actually laid the relationship groundwork. For you, the simple, kind truth is this: your business grows person by person, chat by chat, intro by intro. That's not slow. For a 2/4 Projector, that's the fast lane.</p>
+  <details class="exp"><summary>In Business This Looks Like <span class="pl">+</span></summary>
+  <div class="inner"><ul>
+    <li>Your best clients showing up through referrals and people who already trust you, not through cold marketing</li>
+    <li>The Coherence Code filling most easily through your warm network and community, not ads to strangers</li>
+    <li>Corporate and wellness invitations coming through relationships and reputation, exactly like your three-year vision describes</li>
+    <li>Feeling most alive and effective in warm, relational spaces instead of transactional, salesy ones</li>
+  </ul>
+  <h5>How to Work With This</h5><ul>
+    <li>Treat your network like your number-one business asset. Stay in genuine touch with past clients, colleagues, and the wellness and corporate people you'd love to work with.</li>
+    <li>Before you launch anything, including The Coherence Code, warm up the relationships first. Tell the people who already trust you. Let it spread person to person.</li>
+    <li>Ask happy clients for introductions, not just testimonials. One warm intro to the right founder beats a whole month of posting.</li>
+    <li>Build a few deep, two-way relationships in the corporate and wellness world. That's where your future invitations live.</li>
+  </ul></div></details>
+
+  <div class="bizbox">
+    <div class="tag">🤝 How the 2 and the 4 Team Up</div>
+    <p>Here's the genuinely cool part. The 2nd line gives you a natural gift plus a need for your cave. The 4th line means your opportunities come through people. Put them together and you get this little engine: you do your brilliant, intuitive work in private, and the people who experience it carry your name to the next right person. You retreat to recharge, you come out to do the work, someone's transformed, they tell someone, and the next invitation lands. <b>The whole thing runs on depth and trust, not volume and reach.</b></p>
+    <p>For the work-from-anywhere, pick-your-people life you described, this combo is perfect. You don't need a giant audience. You need a strong reputation in the right circles and just enough visibility for people to spot your gift. The trap is that both lines have a shadow that keeps you small. The 2nd line whispers "stay hidden, stay safe in the cave." The 4th line whispers "stay loyal to what's comfy." But your design isn't built for hidden and comfy. It's built to be recognised for something rare and invited into rooms that matter. So let's build that business. 🚀</p>
+  </div>
+</div>`;
+</script>
+<script>
+/* 04 INCARNATION CROSS / SOUL PURPOSE */
+CONTENT.cross=`
+<div class="eyebrow2">Right Angle Cross of Rulership · 26/45 | 47/22 ✦</div>
+<h2 class="title">Your Incarnation Cross — <em>Sacred Rulership</em> 👑</h2>
+<p class="intro">Your Incarnation Cross is the big one. Your soul-level assignment for this lifetime. Not a personality trait, not something you slowly grow into. More like the reason you're here at all. It's the deepest layer of your design, and when you're living it, everything feels meaningful. When you're ignoring it, everything feels slightly off even when the surface looks great.</p>
+<div class="banner"><p>"You're here to help the already-successful rule their own inner world the way they've learned to rule the outer one. This cross doesn't hand you a brand-new identity. It confirms the one you already suspected."</p></div>
+<p class="body">Amala, your cross is the Right Angle Cross of Rulership. When I read that next to everything you told me, your whole proving-then-arriving journey and the work you do with leaders, it just clicked. Rulership is about mastery, influence, and using power well. You're here to help capable, powerful people use everything they've built in service of who they actually are. You're not here to help people achieve more, they've done plenty of that. You're here to help the already-successful rule their inner world the way they've learned to rule the outer one. This cross doesn't hand you a brand-new identity. It confirms the one you already suspected.</p>
+
+<div class="tabhint"><span class="ar">👇</span> Select each tab below — start with The Four Gates, then Money &amp; Rulership</div>
+<div class="subtabs" data-group="cross">
+  <button class="subtab active" data-sub="c-gates">✦ The Four Gates</button>
+  <button class="subtab" data-sub="c-money">💰 Money & Rulership</button>
+</div>
+<div class="subnav-select" data-group="cross">
+  <select onchange="selectSub(this.value)">
+    <option value="c-gates">✦ The Four Gates</option>
+    <option value="c-money">💰 Money &amp; Rulership</option>
+  </select>
+</div>
+
+<div class="subpanel active" id="sub-c-gates">
+  <h3 class="sec">Your Soul's Business Contract</h3>
+  <details class="exp" open><summary>Gate 26 — The Transmitter <span class="meta">Conscious Sun · your headline gift</span><span class="pl">+</span></summary>
+  <div class="inner"><p>Gate 26 is the headliner of your whole cross, your most important gift. It's the gate of the transmitter. The art of taking something true and saying it so well that it actually lands. At its best, it's pure integrity in how you communicate: using your influence to tell the truth, not to inflate your ego. This is the exact thing that lets you sit with a high-powered executive, see what they can't see yet, and say it in a way they can actually take in. It's also about using your own power and worth well. The shadow of Gate 26 is using all that persuasive skill to puff things up or sell snake oil. The gift is using it to tell the truth so cleanly that someone's whole inner picture rearranges itself.</p>
+  <p>For your work, Gate 26 is everything. It's the power behind your Quantum Journey Hypnosis, where the right word at the right moment slips past the busy brain. It's behind your knack for helping a leader finally name the thing they've felt for years. And it's behind your marketing when you do it from truth, you can describe what you offer in a way the right person feels in their body. <b>Your biggest gift is saying deep truth with power. Use it clean, and it's magnetic.</b></p></div></details>
+  <details class="exp"><summary>Gate 45 — The Gatherer, the Ruler <span class="meta">Conscious Earth</span><span class="pl">+</span></summary>
+  <div class="inner"><p>Gate 45 is the gate of the ruler, the one who naturally gathers people and resources and holds the room. It's the energy of the leader who says "come, this way." For you, this is huge, because it's the part that builds rooms, retreats, seminars, and The Coherence Code. Gate 45 is built to bring the right people together and hold the space. When you picture people travelling to be in the room with you, that's Gate 45 describing your future out loud. <b>You're not only a one-to-one practitioner. You're built to gather and lead a whole community of high-calibre people who recognise your authority.</b></p></div></details>
+  <details class="exp"><summary>Gate 47 — Making Sense of the Mess <span class="meta">Unconscious Sun</span><span class="pl">+</span></summary>
+  <div class="inner"><p>Gate 47 is the gate of the mind sitting in confusion until it finally goes "ohhh, that's what this is." It turns chaos into insight and finds meaning in the stuff that felt meaningless. Perfect for your clients, who show up sensing something's missing but unable to name it. Your Gate 47 helps them go from "something's wrong and I can't explain it" to a clear, settled "oh, that's what's actually going on." You can sit calmly in the confusion with them because you know the clarity is coming. You did your own eleven-year version of exactly that.</p></div></details>
+  <details class="exp"><summary>Gate 22 — Grace <span class="meta">Unconscious Earth</span><span class="pl">+</span></summary>
+  <div class="inner"><p>Gate 22 is the gate of grace, of emotional openness and a certain poise in how you meet people. It's about knowing when to open up, when to listen, and how to bring a little beauty and ease to emotional moments. For your work, this is the quality of presence you bring into the room. The grace that lets a guarded, high-performing leader actually soften and go to the real stuff. People feel safe to drop the act with you, and Gate 22 is a big reason why. It's also why your work feels less like consulting and more like coming home.</p></div></details>
+</div>
+
+<div class="subpanel" id="sub-c-money">
+  <div class="bizbox">
+    <div class="tag">💰 What This Means for Your Money</div>
+    <p>Your cross is built for high-trust, high-influence work with powerful people who are ready to rule their inner world. <b>That's your income. Not volume, not a giant audience, not a revolving door of clients. A smaller group of accomplished people who recognise your authority, get invited into your work, and happily pay for the depth and the discretion.</b> Your Gate 26 means you can convey the value of your work so the right person feels it instantly, so your marketing, done from truth, does the qualifying for you. And your Gate 45 means you're also built to gather, which is exactly why The Coherence Code and your future rooms and retreats aren't a side quest, they're the natural next step from your one-to-one work.</p>
+    <p>You said you want steady ongoing one-on-one clients, maybe three or four sessions a day, four days a week, with the group and seminar work growing alongside it. Your cross says: yep, totally realistic, and honestly that's the exact shape your design is reaching for. The money comes from being known as the person who helps leaders close the gap between outer success and inner truth, pricing that for the transformation rather than the hour, and letting your gathering gift stack group and corporate income on top of the deep individual work. <b>Your income grows as your authority gets more visible and you get more selective, not as you cram in more and more.</b></p>
+  </div>
+  <h3 class="sec">Your Business as Sacred Rulership 👑</h3>
+  <p class="body">Your business isn't just a consulting practice. It's the place where powerful people who have ruled everything except their own inner life finally close that gap. Where the leader who has it all and feels weirdly empty gets seen, named, and guided back to themselves. Where outer success and inner truth stop fighting each other. That's not a generic coaching offer. That's rare, specific, and badly needed, and it's exactly what your cross was built to deliver. So build your whole business around being the one who helps accomplished people rule from the inside out.</p>
+  <div class="practice">
+    <div class="tag">✨ Wealth Activation</div>
+    <ul>
+      <li><b>Position yourself clearly</b> as the person who helps already-successful leaders close the gap between outer success and inner truth. Your Gate 26 can transmit that beautifully, so just say it plainly and let it sort the right people from the rest.</li>
+      <li><b>Price your 1:1 Transition Consulting for the transformation</b>, the coherence on the other side, not for hours on a call. Your cross is built for high-value, not high-volume.</li>
+      <li><b>Lean into your Gate 45 gathering gift.</b> Let The Coherence Code, plus the seminars and rooms in your vision, grow as a real income stream, not an afterthought to your 1:1 work.</li>
+      <li><b>Use your own proving-healing-arriving story as your main transmission.</b> It's the cleanest demo of your Gate 26 there is, and it's what makes leaders go "oh, she's one of us, and she found the way through."</li>
+    </ul>
+  </div>
+  <div class="mantra"><div class="tag">Money Mantra</div><div class="txt">"I help powerful people rule their own inner world. The truer my message, the more my income matches the depth of what I give."</div></div>
+</div>`;
+</script>
+<script>
+/* 05 OPEN CENTRES */
+CONTENT.open=`
+<div class="eyebrow2">Your Open Centres ✦</div>
+<h2 class="title">Your Client-Reading <em>Superpower</em> 📡</h2>
+<p class="intro">Open centres get a bad rap, but they're not weaknesses at all. They're the parts of your chart that aren't fixed, so they soak up and amplify the energy, emotions, and experiences of everyone around you. Think of them as empathy antennas. They're where you feel the world most intensely. For someone who works as closely with people as you do, they're basically a superpower, because they let you actually feel what your clients are carrying.</p>
+<p class="body">Amala, you've got four open centres: the Throat, the Solar Plexus, the Sacral, and the Root. That's a lot of antenna. It's a big reason you're so freakishly good at reading the people you serve. You don't just hear what a leader says. You feel the pressure they're under, the mood they're hiding, the unspoken "am I even allowed to want more?" The flip side: you have to be a little deliberate about what you soak up and how you put it down, especially as a Projector who already feels everything. Let's walk through each one.</p>
+
+<details class="exp" open><summary>🗣️ Open Throat — the pressure to perform <span class="pl">+</span></summary>
+<div class="inner">
+<div class="feel">You know the pressure to speak, to perform, to always have the right thing to say, to fight to be heard in rooms where everyone's talking over each other. You also know the relief of a space where you can just say your thing when it's truly yours to say, and be heard. You've lived both. Which is why you can feel exactly when someone's straining to be heard, and when they've finally stopped performing.</div>
+<p>The Throat is the centre of communication and getting things out into the world. When it's open, like yours, you don't have one fixed way of talking. Instead you pick up the communication energy around you, and you feel that pressure to say something, fill the silence, prove yourself out loud. For a Projector with an open Throat, here's the key: your words land best when you're invited to speak, not when you push to be heard. Wait for the nod, then speak, and you're magnetic. Force it, and you feel unheard, which is a fast track to that classic Projector bitterness.</p>
+<p>This is so relevant to your people. Executives and founders live in worlds where they're expected to always have the answer and never look lost. Your open Throat means you get that pressure from the inside, and you can feel when a leader is performing confidence over an empty tank. In your sessions, you create the rare space where they don't have to perform their voice at all. They can be quiet, unsure, searching. That's where the real work starts.</p>
+<h5>Your Soulmate Client Struggles With</h5><ul>
+<li>The constant pressure to have the polished answer, even when inside they feel shaky or hollow</li>
+<li>Feeling unheard at the deep level even though people listen to them all day long</li>
+<li>Having nowhere to say the quiet, scary thing: "I've got it all and something's still missing"</li>
+<li>Talking and presenting nonstop, yet never feeling truly seen behind the performance</li>
+</ul>
+<h5>Use This in Your Messaging</h5><ul>
+<li>"You've spent years being the one with the answer. What if the most important thing in you is the question you've never had space to ask out loud?"</li>
+<li>"Everyone listens to you. When's the last time someone actually saw you?"</li>
+<li>"You don't need another room where you have to perform certainty. You need one where you can finally stop."</li>
+</ul>
+<h5>How You Help Her Move Through This</h5>
+<p>Your work is the one place a high-performing leader doesn't have to manage their message. In your 1:1 work, they can stop transmitting and start telling the truth, often for the first time in years. You're not dazzled by their polish and not spooked by their power, so they can finally put it all down. Your Quantum Journey Hypnosis goes even deeper, beneath the slick, articulate mind to where the real stuff lives. And your Gate 26 means when you do reflect something back, it lands with weight. You say the one true thing, at the right moment, in a way they can take in.</p>
+<h5>Content Topics</h5>
+<p>The exhaustion of being the person everyone turns to for answers · why being listened to isn't the same as being seen · the question high achievers are most scared to ask out loud · what happens when a leader finally stops performing certainty · the inner voice you've silenced to succeed · why the most powerful person in the room is often the loneliest.</p>
+</div></details>
+
+<details class="exp"><summary>💧 Open Solar Plexus — feeling everyone's weather <span class="pl">+</span></summary>
+<div class="inner">
+<div class="feel">You know what it's like to feel everyone else's emotional weather like it's your own. To walk into a room and instantly absorb the tension, the disappointment, the grief nobody's naming. To smooth things over because someone else's big feelings land so heavily in you. You've lived inside that sensitivity. Which is why you can feel the real emotional truth of a client who's all calm and composed on the outside while something quietly cracks underneath.</div>
+<p>The Solar Plexus is the emotions centre. When it's open, like yours, you don't make your own steady emotional waves. You soak up everyone else's, often feeling them harder than they do. This makes you an incredible reader of emotional truth, a core part of your Seer gift. You can sense the sadness under the success, the fear under the swagger, the grief they haven't even admitted to themselves. Most people perform "fine." You feel that it's not.</p>
+<p>The thing to watch with an open Solar Plexus: dodging hard conversations or saying yes just to keep the peace, because someone else's discomfort feels unbearable in your body. In business that shows up as under-charging, over-giving, or hanging onto a client way past the natural end because ending it feels heavy. Your move is to feel the emotion clearly, notice whose it actually is, and not let someone else's feelings drive your decisions. Your gut is your anchor here, not the emotional weather report.</p>
+<h5>Your Soulmate Client Struggles With</h5><ul>
+<li>Carrying a quiet, unnamed grief about the life they thought they'd have by now, with no one safe to say it to</li>
+<li>Looking composed and in control while something underneath feels hollow, sad, or numb</li>
+<li>Managing everyone else's emotions, their team's, their family's, while nobody tends to theirs</li>
+<li>A flatness where the wins don't land and the success doesn't really feel like anything</li>
+</ul>
+<h5>Use This in Your Messaging</h5><ul>
+<li>"You got everything you worked for. So why does it feel like nothing?"</li>
+<li>"There's a grief that comes with achieving the dream and finding the gap is still there. You're allowed to name it."</li>
+<li>"You hold everyone's emotional world together. Who's holding yours?"</li>
+</ul>
+<h5>How You Help Her Move Through This</h5>
+<p>Your open Solar Plexus gives you a backstage pass to what a leader is actually feeling under all that composure. You don't just hear "I'm fine." You feel the exact texture of what they're really carrying. And because you've done eleven years of your own deep work, you can sit with their grief or numbness or fear without flinching and without rushing to fix it. Your Quantum Journey Hypnosis really shines here, because all that stuffed-down emotion usually lives below the thinking mind. That's not a relaxing little spa moment. That's years of held emotion finally getting to surface in a space safe enough to hold it.</p>
+<h5>Content Topics</h5>
+<p>The grief nobody warns you about · why emotional numbness is so common at the top · the cost of being the steady one for everybody else · what it means when the wins stop landing · why composure isn't the same as peace · the feeling under the success that high achievers rarely admit.</p>
+</div></details>
+
+<details class="exp"><summary>🔋 Open Sacral — running on borrowed fuel <span class="pl">+</span></summary>
+<div class="inner">
+<div class="feel">You know what it's like to push way past your limits, to keep going when your tank was empty, to mistake other people's drive for your own and burn out trying to keep pace. You've lived the "do too much because everyone around me is doing too much" cycle. Which is exactly why you can spot, in two seconds, when a high achiever is running on fumes and calling it commitment.</div>
+<p>The Sacral is the life-force and work-energy centre. When it's open, like yours, you don't have that steady, renewable workhorse battery. You borrow and amplify the energy of the people around you, which can make you feel temporarily superhuman, and then leave you flat once you realise that energy was never yours. This is the heart of being a Projector. You're not built to go and go and go. You're built for focused bursts, then rest. Ignore that and the open Sacral will drive you straight into burnout while you wonder why you can't match people who seem to have endless gas.</p>
+<p>For your business, this is the centre to respect the most. The whole reason your three-year vision is selective, spacious, and work-from-anywhere is that your design needs it. The trap of the open Sacral is not knowing when enough is enough, pushing past your natural stop because everyone else is still going. Your job is to honour your real energy, stop when your body says stop, and build a business that doesn't depend on a workhorse battery you were never issued.</p>
+<h5>Your Soulmate Client Struggles With</h5><ul>
+<li>Not knowing when enough is enough, working past every natural stopping point because that's how they got here</li>
+<li>Mistaking exhaustion for dedication and burnout for a personal failing</li>
+<li>Not being able to rest without guilt, because their whole identity is built on doing</li>
+<li>A body practically waving a white flag while the mind insists on pushing through</li>
+</ul>
+<h5>Use This in Your Messaging</h5><ul>
+<li>"You've built a life on being the one who never stops. What would it cost you to find out who you are when you do?"</li>
+<li>"Exhaustion isn't a badge of commitment. Sometimes it's the only language your body has left to get your attention."</li>
+<li>"The drive that built your success might be the exact thing now keeping you from your life."</li>
+</ul>
+<h5>How You Help Her Move Through This</h5>
+<p>Your open Sacral means you get the high achiever's specific brand of exhaustion from the inside, not as a wellness buzzword but as a thing you've actually lived. So when a leader sits in front of you running on empty and calling it dedication, you don't lecture them about "balance." You see the pattern and help them spot what it's really protecting them from feeling. And as someone whose energy works in bursts instead of an endless stream, you model something they've probably never seen in a high-status person: powerful and rested at the same time.</p>
+<h5>Content Topics</h5>
+<p>Why the most driven people are often the closest to burning out · the difference between commitment and just not being able to stop · why rest feels dangerous to high achievers · the belief that you're only worth what you produce · how to be powerful and rested at the same time · the myth that slowing down means falling behind.</p>
+</div></details>
+
+<details class="exp"><summary>⚡ Open Root — the pressure that isn't yours <span class="pl">+</span></summary>
+<div class="inner">
+<div class="feel">You know the constant, pressing urge to get it all done, clear the pressure, handle the next thing and the next, telling yourself that one day the pressure will finally lift. You know how that rush can push you into fast moves just to make the feeling stop. You've lived under that pressure. Which is why you can feel a leader's hidden adrenaline and help them step out of the rush long enough to actually choose.</div>
+<p>The Root is the pressure-and-adrenaline centre, the drive to get stuff done and resolved. When it's open, like yours, you soak up and amplify the pressure and urgency of everyone around you. You feel this constant push to hurry, and a lot of it isn't even yours. For a Projector, an open Root can be extra intense, because the whole world's urgency is landing in a body that's also being told to slow down and wait for the invitation. Realising the rush mostly isn't yours is genuinely freeing, and it's key for your decisions.</p>
+<p>In business, the open Root is the one most likely to shove you into rushed calls, launching before it's time, saying yes to make the pressure stop, taking a client because the money panic feels unbearable. Your move is to notice that the urgency is amplified, not real, and give yourself space to drop back into your gut and check what's actually true. Your best decisions never come from Root pressure. They come from the calm, in-the-moment knowing of your gut once the fake urgency has blown through.</p>
+<h5>Your Soulmate Client Struggles With</h5><ul>
+<li>A relentless internal pressure to keep handling and clearing the list, with the rest never actually arriving</li>
+<li>Making fast, reactive decisions just to relieve the pressure instead of because they're right</li>
+<li>The belief that once they get through this next thing, they'll finally breathe, a moment that never comes</li>
+<li>A low-grade adrenaline buzz they've started to think is just normal</li>
+</ul>
+<h5>Use This in Your Messaging</h5><ul>
+<li>"You keep telling yourself you'll breathe once this next thing is handled. It never comes, does it?"</li>
+<li>"The pressure you're living under was never meant to be carried this long. A lot of it isn't even yours."</li>
+<li>"What would you choose if the urgency wasn't the one making the decision?"</li>
+</ul>
+<h5>How You Help Her Move Through This</h5>
+<p>Your open Root gives you a direct read on the hidden adrenaline a leader is running on. You feel the pressure they're carrying, often before they'll admit how wired and wiped out they actually are. Instead of piling on more, like the rest of their world does, you create a space with zero urgency in it. You help them see that most of the urgency they feel is absorbed, not real. And your Quantum Journey Hypnosis is perfect for this, because it works below the wired, problem-solving mind, guiding a chronically pressured nervous system into a state it might not have touched in years.</p>
+<h5>Content Topics</h5>
+<p>Why "I'll rest once this is handled" is a trap · the hidden adrenaline most successful people are quietly running on · how chronic urgency secretly shapes every decision · the difference between real urgency and absorbed pressure · what clarity shows up when the rush finally stops · how to make decisions that aren't driven by pressure.</p>
+</div></details>`;
+
+/* 06 DEFINED CENTRES */
+CONTENT.defined=`
+<div class="eyebrow2">Your Defined Centres ✦</div>
+<h2 class="title">Where You <em>Lead From</em> 🌟</h2>
+<p class="intro">Your defined centres are the opposite of your open ones. These are where you've got steady, reliable energy that doesn't wobble based on who you're with or what room you're in. They're your home turf. Your natural authority. The places you lead from without even trying.</p>
+<p class="body">Amala, you've got five defined centres: the Head, the Ajna, the Will (also called the Heart or Ego), the G-Centre, and the Spleen. That's a strong, solid core. It means that while you're picking up everyone else's stuff through your open centres, you've got a fixed, reliable inner anchor that doesn't dissolve in anybody's presence. You know who you are. You know what you're here to do. You've got a steady inner authority and a gut you can trust on the spot. That combo, deep sensitivity to others plus a rock-solid core, is exactly what makes a great guide. You can go all the way into someone's world without losing yourself in it.</p>
+
+<details class="exp" open><summary>🧠 Defined Head &amp; Ajna — your brain is reliable <span class="pl">+</span></summary>
+<div class="inner"><p>Your defined Head and Ajna together give you a consistent way of thinking and making sense of things. The Head is the part that wonders and asks questions. The Ajna turns all that into actual concepts and understanding. With both defined, your way of thinking doesn't flip every time a confident person walks in. You don't lose your own mind in someone else's certainty. You've got genuine mental authority, a reliable way of making sense of messy human stuff that's just yours.</p>
+<p>For your work, this is gold. The leaders you serve are sharp. They've read the books, done the therapy, hired the coaches. What they haven't found is someone who can make sense of their experience at a level that actually satisfies a clever brain while still going deeper than the intellect. Your defined Head and Ajna let you meet them mentally, hand them a framework that finally explains the gap they're feeling, and then take them underneath it into the real work. The Coherence Code, with its five clean pillars, is literally your Head and Ajna made visible: you took fifteen years of deep inner work and organised it into something a smart, capable person can grab and use.</p>
+<h5>Practical Bit</h5><p>Trust your own frameworks. Your way of explaining the journey from outer success to inner coherence is yours, it's consistent, and it's a real asset. Don't borrow other people's models or water yours down to sound more "normal." Your distinct way of making sense of things is part of what people come for. Name it, structure it, let it be the backbone of your offers.</p></div></details>
+
+<details class="exp"><summary>❤️ Defined Will (Heart) — you already know you're worth it <span class="pl">+</span></summary>
+<div class="inner"><p>Your defined Will is rare. Only a small slice of people have it, and it gives you something most folks don't: steady, reliable willpower plus a built-in sense of your own worth. When you commit to something, you've actually got the gas to follow through. And crucially, you don't have to absorb the world's endless worth-anxiety, because yours is fixed. You know your value. You don't need a gold star to feel it, and you can make and keep promises from a real place of self-worth.</p>
+<p>This is massive for your business, especially pricing. Tons of coaches and healers have an open Will and constantly wrestle with "am I really worth this?" You mostly don't have that wound. Your defined Will means you can hold your prices, name your value, and stand in your worth without the spiral. When you do under-charge or hesitate, it's usually your open Solar Plexus trying to dodge someone's discomfort, not a real lack of self-worth. Knowing the difference frees you to price from your Will instead of from "please don't be upset with me."</p>
+<p>Your defined Will is also part of why your story is so powerful. The refusal to let others define you, the will to break through every outer ceiling, the commitment to eleven years of inner work, that's your Will in action.</p>
+<h5>Practical Bit</h5><p>Trust your worth, price accordingly, and only make commitments you can actually keep. Your willpower is real but not infinite, so aim it at the few things that matter most and let your Projector design stop you from over-committing.</p></div></details>
+
+<details class="exp"><summary>🧭 Defined G-Centre — you know who you are <span class="pl">+</span></summary>
+<div class="inner"><p>Your defined G-Centre gives you a steady sense of identity, direction, and love. You know who you are. You've got a reliable inner compass for where your life is meant to go, even when the path isn't fully lit yet. Unlike someone with an open G who tries on identities depending on the room, your sense of self holds steady. This is the "I know who I am and roughly where I'm headed" centre, and yours is solidly defined.</p>
+<p>For a guide who works with people in identity transition, this is a gift. The leaders who come to you are often fogged up about who they are under all their roles. Your defined G means you can stay rock-steady in your own sense of self while they're lost in theirs. You're the fixed point they navigate by. You don't get swept into their confusion, which is exactly why they trust you to lead them out of it.</p>
+<p>It also shows up in how clear your vision is. You described your three-year future with real specificity and conviction, the rooms, the selectivity, the freedom, being known for one thing. That clarity is your G-Centre talking. Trust it.</p>
+<h5>Practical Bit</h5><p>Let your clear sense of who you are and where you're going show up in your work. People with a defined G are kind of built to be a compass for others. Your steadiness is part of what draws people in and makes them want to be near you.</p></div></details>
+
+<details class="exp"><summary>🦋 Defined Spleen — your gut is legit <span class="pl">+</span></summary>
+<div class="inner"><p>Your defined Spleen gives you consistent, reliable intuition, instinct, and an in-the-moment read on what's healthy, safe, and true. It's the same centre behind your Splenic Authority, and it's one of your best instruments as a Seer. Your spleen reads people and situations instantly and accurately. You know, in your body, who's being real, what's actually going on under the surface, and where the real issue is hiding, usually way before there's any logical proof.</p>
+<p>In your sessions, your defined Spleen is what lets you sense exactly where to go and when. No script needed, no working it out in your head. You feel the right thread to pull, the moment to go deeper, the thing being avoided. This is especially powerful in your Quantum Journey Hypnosis work, where you're navigating below the thinking mind and need a guidance system faster than thought. Your spleen is that system, and it's reliable.</p>
+<h5>Practical Bit</h5><p>Trust your gut more, not less, especially in business. Because it's quiet and instant, it's easy to talk yourself out of it or second-guess it later. Don't. Your spleen is reading something real. Meet a potential client and feel instant clarity? Trust it. Something feels quietly off about an opportunity? Honour it.</p></div></details>
+
+<div class="bizbox">
+  <div class="tag">💼 What This Means for How You Work</div>
+  <p>Your defined Head, Ajna, Will, G-Centre, and Spleen give you a seriously strong inner foundation: a consistent way of making sense of messy human stuff, reliable willpower and a fixed sense of your worth, a steady identity and clear direction, and an instant, trustworthy gut. <b>That's the solid core that lets you dive deep into other people's inner worlds, through your sensitive open centres, without ever losing yourself.</b> Your natural authority lives in your ability to see clearly, know your worth, hold your direction, and trust your gut in the moment. That's a rare, powerful combo for the work you do. Trust it. Build from it. And charge for it.</p>
+</div>`;
+</script>
+<script>
+/* 07 SOULMATE CLIENT */
+CONTENT.client=`
+<div class="eyebrow2">Your Soulmate Client ✦</div>
+<h2 class="title">Who You're <em>Here For</em> 💝</h2>
+<p class="intro">This is a focused snapshot. The full deep-dive version gets built separately as your Niche and Soulmate Client document once you've fully landed your niche. What's here comes straight from your intake, your website, and your Human Design, all built around the person you described so clearly: the executive, founder, or leader who has built everything they were supposed to build and is quietly going "okay, but something's missing."</p>
+<div class="banner"><p>"She's done the therapy, the coaching, the retreats. She's nobody's fool. She's not after a new title or strategy. She's ready to find out what's on the other side of all that proving."</p></div>
+<h3 class="sec">She Is</h3>
+<ul class="spark">
+<li>A successful executive, founder, or senior leader, often in her forties or fifties, who has achieved the career, the status, the whole life that was supposed to add up to enough</li>
+<li>Self-aware and high-achieving. She's done the therapy, the coaching, the retreats. She's nobody's fool and she's not here to be told something she's never heard</li>
+<li>Living with a quiet, nagging gap between the life she's living and the one she senses is possible. Not a crisis. Just a low, steady hum of "is this it?"</li>
+<li>Not looking to be fixed, and not after a new title or strategy. She's ready to find out what's on the other side of all that proving</li>
+<li>Done trying to squeeze herself into the life she built, and starting to suspect she never had to choose between outer success and inner truth</li>
+<li>Privately wiped out from carrying it all, while presenting total composure to everyone around her</li>
+<li>Quietly powerful, used to being the one with the answers, and starving for a space where she doesn't have to perform any of it</li>
+</ul>
+<h3 class="sec">What She's Experiencing Right Now</h3>
+<ul class="spark">
+<li>A sense that something essential is missing, even though she has everything she was told would make her feel complete</li>
+<li>The weird grief of getting the dream and finding the gap is still there</li>
+<li>A feeling that her outer success and inner life are pulling in opposite directions, and the strain of holding both</li>
+<li>Being seen as the strong, capable one while privately wondering who she even is under the role</li>
+<li>A quiet fear that this is just how it is now, and the aliveness she remembers isn't coming back</li>
+</ul>
+<h3 class="sec">What She Actually Wants</h3>
+<ul class="spark">
+<li>To close the gap between who she appears to be and who she actually is, and to stop performing a version of herself</li>
+<li>Coherence: to know who she is, what she wants, and to actually live it instead of performing it</li>
+<li>To discover she doesn't have to choose between outer success and inner truth, and never did</li>
+<li>To be met by someone who isn't impressed or intimidated by her success and can see the real her underneath</li>
+<li>To feel alive in her own life again, not just successful in it</li>
+</ul>
+<div class="bizbox">
+  <div class="tag">💎 Why She Can't Find This Anywhere Else</div>
+  <p>She can find an executive coach to optimise her performance. A therapist to work the past. A wellness retreat for a temporary reset. What she can't find is someone with your exact combo: a lived experience of breaking through every outer ceiling and then doing the deep inner work on the other side, the precision of Quantum Journey Hypnosis that goes beneath the thinking mind, the brains to make sense of her experience at the level a sharp mind needs, and the grounded, intuitive presence of a Seer who can hold her without being overwhelmed or starstruck.</p>
+  <p>You're not someone who studied high achievers from a textbook. <b>You were one.</b> You earned the success, hit the inner ceilings, and found the way through, including healing what doctors called permanent. That mix of "I've been where you are" plus "and I've got the exact tools to guide you through" doesn't exist anywhere else. When she finds you and reads your words, she'll know almost instantly that you're the one she's been looking for, because you'll describe her inner world more accurately than she's ever heard it described.</p>
+</div>
+<h3 class="sec">The Transformation You Provide</h3>
+<div class="ba">
+  <div class="h b">Before</div><div class="h a">After</div>
+  <div class="c left">A constant gap between outer success and inner truth she can't name or close</div><div class="c">Coherence between who she is and how she lives, with the gap finally closed</div>
+  <div class="c left">Having everything and still feeling something essential is missing</div><div class="c">A felt sense of fullness and aliveness that doesn't hang on the next achievement</div>
+  <div class="c left">Performing a version of herself she built to survive and succeed</div><div class="c">Living as who she actually is, no more performing the role</div>
+  <div class="c left">Outer success and inner life pulling in opposite directions</div><div class="c">The two finally aligned, no longer forced to pick one</div>
+  <div class="c left">Being the strong one for everyone while privately running on empty</div><div class="c">Genuinely resourced, with a self she recognises and can lean on</div>
+  <div class="c left">A quiet fear the aliveness is gone for good</div><div class="c">The real, lived discovery of how good her life can actually feel</div>
+</div>
+<h3 class="sec">Language She Uses</h3>
+<div class="practice">
+  <div class="tag">💬 Her Exact Words</div>
+  <ul>
+    <li>"I know there's something more, I just can't quite name it."</li>
+    <li>"I've done everything I was supposed to do. So why does it feel like this?"</li>
+    <li>"From the outside everything looks fine. Inside, something's off."</li>
+    <li>"I've done the therapy, the coaching, the retreats. Nothing reached the root."</li>
+    <li>"I'm not after a new title or strategy. I want a way back to myself."</li>
+    <li>"I don't want to have to choose between my success and my soul."</li>
+    <li>"I'm taking some time to think about what's next."</li>
+  </ul>
+</div>`;
+
+/* 08 WEALTH CODES (kept as-is) */
+CONTENT.wealth=`
+<div class="eyebrow2">Your Wealth Codes ✦</div>
+<h2 class="title">How Your Design <em>Makes Money</em> 💰</h2>
+<p class="intro">Your money isn't built on volume or hustle. It's built on the depth of what you carry, the rareness of who you are, and the recognition that pulls the right people toward you. Your design is made for high-trust, high-value work with a smaller group of accomplished people who recognise your gift and get invited into it. Knowing where your income actually comes from, both energetically and practically, is how you build toward that steady, work-from-anywhere income and the pick-your-clients practice you described.</p>
+
+<details class="exp" open><summary>💫 Wealth Code 1 — The Gift of Powerful Transmission <span class="pl">+</span></summary>
+<div class="inner">
+<h5>What This Creates</h5><p>Your Gate 26, the star of your cross, is the ability to say deep truth with power and precision. When you speak or write from this gift, the right person feels it in their body. They see themselves in your words. That's what turns a post, a talk, or a discovery call into the moment someone goes "this woman gets something nobody else has named for me." For a Projector who runs on recognition, this gift is the engine behind all the invitations your business depends on.</p>
+<h5>How It Shows Up</h5><p>In the way a leader goes quiet when you reflect back what you see in them. In the precision of your hypnosis work, where the right word slips past the thinking mind. In your own story, told clean, becoming the most magnetic thing in your marketing. In the moment on a call when you say one true thing and the whole conversation shifts.</p>
+<h5>The Wealth Leak</h5><p>Your voice is already strong and your message is clear, which is rare, so the leak isn't quality. It's volume. As a 2nd line hermit, your instinct is to stay in the cave, and as a Projector you don't want to broadcast. The result can be too few transmissions reaching the world, which means too few of the right people getting the chance to recognise you and invite you in. Your gift is strong. It just needs to be seen a bit more often, in the right rooms.</p>
+<h5>Wealth Activation</h5><ul>
+<li>Commit to a small, doable rhythm of high-quality sharing. Not daily posting. A few really resonant pieces a month that name the unnamed thing for your specific person.</li>
+<li>Tell your own story as your main transmission. Proving, hitting the inner ceilings, healing what was called permanent. It's the cleanest demo of your gift.</li>
+<li>Treat speaking, podcasts, and being in rooms as priority channels. Your transmission is most powerful live, and live rooms are where your future corporate and retreat invitations are born.</li>
+</ul>
+<div class="mantra"><div class="tag">Money Mantra</div><div class="txt">"When I speak the truth I see, the right people recognise me. My voice is the invitation."</div></div>
+</div></details>
+
+<details class="exp"><summary>👑 Wealth Code 2 — The Gift of the Gatherer <span class="pl">+</span></summary>
+<div class="inner">
+<h5>What This Creates</h5><p>Your Gate 45, the ruler and gatherer, gives you natural authority to bring people together and hold the room. This is the energy behind The Coherence Code, the seminars, the retreats, the rooms people travel for. It's a different income stream from your one-to-one work, and it scales in a way that actually fits a Projector: one well-held room can serve a bunch of people without you cloning your individual sessions. Your gathering gift is how your income grows past the ceiling of your personal calendar.</p>
+<h5>How It Shows Up</h5><p>In the way people naturally orient toward you and want to be in your space. In your vision of rooms, cohorts, and corporate work. In The Coherence Code's five-pillar structure, which is basically a container built to gather and lead a group through a transformation. In the sense that you're not only meant to work one-to-one, but to hold and guide a community of accomplished people.</p>
+<h5>The Wealth Leak</h5><p>Right now your visible offer leans heavily toward the one-to-one work, with the group programme still in its "coming soon" phase. The leak is that your gathering gift, which is a genuine money-maker, isn't yet earning at the scale it's designed for. The Coherence Code at the founding rate of fifteen hundred euros is the seed of this stream. Leaving it permanently "almost ready" keeps a big chunk of your design, and your income, asleep.</p>
+<h5>Wealth Activation</h5><ul>
+<li>Give The Coherence Code a real launch date and fill the founding cohort through your warm network, exactly how your 4th line works. Let the first group prove the model, then raise the rate.</li>
+<li>Build toward one or two gathering offers a year, a retreat, a seminar, an intensive room, that become your higher-leverage income alongside your selective one-to-one work.</li>
+<li>Position your gathering work as the natural next step from your individual work, so a 1:1 client can move into the room and a room person can move into 1:1. The two feed each other.</li>
+</ul>
+<div class="mantra"><div class="tag">Money Mantra</div><div class="txt">"I'm built to gather the right people and hold the room. My leadership is a stream all its own."</div></div>
+</div></details>
+
+<details class="exp"><summary>🏔️ Wealth Code 3 — The Gift of Lived Authority <span class="pl">+</span></summary>
+<div class="inner">
+<h5>What This Creates</h5><p>You didn't study this from the cheap seats. You earned the outer success, hit the inner ceilings, did eleven years of deep work, and healed what doctors called permanent. That lived authority can't be faked or bought. It's why a skeptical, accomplished leader will trust you when they'd never trust a coach with only theory. Your defined Will gives you an unshakeable sense of your own worth, so you can carry this authority without arrogance and without apologising for it. People pay for proven authority, and yours is proven in your own life.</p>
+<h5>How It Shows Up</h5><p>In the instant credibility you have with high achievers because you've been one. In the trust that builds the second a leader realises you actually get their world from the inside. In your willingness to price your work for its real value, because your defined Will knows what it's worth. In the way your story does the qualifying before a discovery call even starts.</p>
+<h5>The Wealth Leak</h5><p>The risk here is under-pricing or over-giving, not from low self-worth, but from your open Solar Plexus dodging the discomfort of a client's reaction to a big price, or your open Sacral over-delivering past the point of sustainability. The leak is energetic and financial at once: too much given for too little, which a Projector simply can't keep up. Your defined Will knows your value. The work is to price from the Will, not from the open centres' urge to keep everyone comfy.</p>
+<h5>Wealth Activation</h5><ul>
+<li>Price your 1:1 Transition Consulting as a premium, high-trust container. You're charging for coherence and for who you are, not for hours. Let your defined Will set the number and hold it.</li>
+<li>Notice when you're tempted to discount or over-deliver to ease someone's discomfort. That's the open Solar Plexus, not the truth of your worth. Pause and price from your Will.</li>
+<li>Let your lived story carry your authority so you never have to oversell. The proof is your life. Say it plainly and let it do the work.</li>
+</ul>
+<div class="mantra"><div class="tag">Money Mantra</div><div class="txt">"My authority was earned in my own life. I price the depth of what I give, and I hold it without apology."</div></div>
+</div></details>
+
+<details class="exp"><summary>🌐 Wealth Code 4 — The Gift of the Trusted Network <span class="pl">+</span></summary>
+<div class="inner">
+<h5>What This Creates</h5><p>Your 4th line means your money flows through relationships. The clients who matter most, the corporate invitations, the retreat gigs, the intro to exactly the right founder, they all come through people who already know and trust you and pass that trust along. This is the warmest, highest-converting growth there is, and it's precisely how your design loves to expand. Your network isn't a nice-to-have. It's your main money channel.</p>
+<h5>How It Shows Up</h5><p>In the way your best opportunities tend to come from a conversation, a referral, or someone who already experienced your work. In the loyalty of clients who, once they've had the transformation you create, turn into your biggest fans. In the corporate and wellness relationships that, once built, open doors no amount of cold pitching ever could.</p>
+<h5>The Wealth Leak</h5><p>The leak is leaving this engine on idle. If you sit quietly in the cave waiting for the network to magically activate itself, it stays slow. The 2nd line wants to retreat and the 4th line wants warm relationships, and where they collide is the leak: a tendency to go quiet and let connections go cold instead of tending them. Your network grows your wealth only when you stay in genuine, warm contact and let people know what you're building.</p>
+<h5>Wealth Activation</h5><ul>
+<li>Make tending your network an actual business activity, not an afterthought. Stay in real contact with past clients, colleagues, and the corporate and wellness people you want to be invited in by.</li>
+<li>Ask delighted clients for intros to the specific people they know who are stuck in the same gap. One warm intro beats a month of content.</li>
+<li>Build a few deep, two-way relationships with people who serve or gather your soulmate clients, retreat hosts, corporate wellbeing leads, founder communities. That's where your invitations live.</li>
+</ul>
+<div class="mantra"><div class="tag">Money Mantra</div><div class="txt">"My wealth moves through trust. The more I tend my relationships, the more the right invitations find me."</div></div>
+</div></details>`;
+</script>
+<script>
+/* 09 RHYTHM */
+CONTENT.rhythm=`
+<div class="eyebrow2">Your Ideal Working Rhythm ✦</div>
+<h2 class="title">A Week That <em>Works With You</em> 🌿</h2>
+<p class="intro">This is a practical take on how to set up your week so it works with your design instead of against it. Not a rulebook you have to follow to the letter, just a heads-up that when you work against your wiring, your sessions, your energy, and your results all take a hit.</p>
+<h3 class="sec">Your Energy, Realistically</h3>
+<p class="body">As a Projector with an open Sacral, you don't have a never-ending battery. You've got deep, focused energy that goes hard in bursts and then genuinely needs to rest. That's not a flaw to push through. It's the operating manual for a sustainable, work-from-anywhere practice. Your vision of three or four sessions a day, four days a week, isn't you playing small. For a Projector doing deep, intimate work, that's honestly near the top of the healthy range, and building toward it on purpose is the design working right. The biggest threat to your energy isn't too few clients. It's the open-centre habit of soaking up everyone's urgency and emotion and blowing past your real stopping point.</p>
+<p class="body">You've also got four open centres, the Throat, Solar Plexus, Sacral, and Root, so you're absorbing a lot from your clients every single session. The leaders you work with carry pressure, stuffed-down emotion, and exhaustion, and you take that in. Without a few deliberate practices between and after sessions, you'll end the day lugging around stuff that was never yours. That's not burnout from overwork. That's residue from not clearing, and for your design it's the single most important thing to stay on top of.</p>
+<div class="practice">
+  <div class="tag">📅 A Weekly Rhythm Worth Trying</div>
+  <ul>
+    <li>Three to four client sessions a day max, just like your vision says, with real gaps between them. More than that and your open centres carry more than they can put down between people.</li>
+    <li>Four client days a week tops, with at least one full day, ideally more, for retreat, integration, and the alone time your 2nd line needs to recharge.</li>
+    <li>Put your deepest work, especially the hypnosis, in the part of the day when your focus is sharpest, and keep the rest of that day lighter. Your body likes a calm, unforced daily rhythm over a packed, front-loaded grind.</li>
+    <li>Build a clearing practice between sessions, ten to fifteen minutes of whatever brings you back to you: stillness, movement, a walk, some breathing. For your design this isn't optional, it's maintenance.</li>
+    <li>Have an end-of-day ritual that closes the work down energetically. You're carrying your clients' pressure and emotion. Put it down on purpose before you step back into your own life.</li>
+    <li>Guard at least one full day a week with zero client contact and zero business tasks. Your 2nd line genius recharges in retreat, and your Projector energy needs real rest to rebuild.</li>
+  </ul>
+</div>
+<div class="bizbox">
+  <div class="tag">📣 A Quick Word on Content and Visibility</div>
+  <p>You've got no channel connecting to your Throat, which is a fancy way of saying your visibility isn't built to be cranked out on a schedule. Your content comes from response and inspiration, not from forcing output. So please don't build a daily posting machine. It'll drain you and it won't fit you. <b>Instead, catch the insights that pop up in your sessions, your reflection, and your own inner work, and shape them into a few resonant pieces.</b> When something genuinely moves you or lands in a session, that's your content. A few true posts a month, plus saying yes to the right speaking invites, will do way more for your business than a brutal daily calendar.</p>
+</div>
+<div class="practice stop">
+  <div class="tag">⚠️ Signs You're Working Against Your Design</div>
+  <ul>
+    <li>You end your days feeling bitter, unseen, or resentful. That's your Projector warning light saying you've been giving energy where you weren't recognised or invited.</li>
+    <li>You're tired in a way sleep doesn't fix, a sign your open Sacral got pushed past its real limit, probably from soaking up other people's drive.</li>
+    <li>You're making rushed, pressured calls, your open Root amplifying an urgency that mostly isn't yours, instead of waiting for your gut's quiet yes or no.</li>
+    <li>You're forcing content on a schedule and feeling drained and unheard, instead of letting it come from genuine inspiration.</li>
+  </ul>
+</div>`;
+
+/* 10 MESSAGING */
+CONTENT.message=`
+<div class="eyebrow2">Your Magnetic Messaging ✦</div>
+<h2 class="title">How You <em>Magnetise</em> Clients 🧲</h2>
+<p class="intro">You're not trying to reach everyone vaguely into wellness. You're trying to be recognised by one specific person: the accomplished leader who has built it all and quietly senses something's missing. As a Projector, your whole game is recognition. Your messaging isn't there to convince or chase. It's there to make the right person feel so seen that they go "that's her, that's the one," and reach out. That reaching out is the invitation your design runs on.</p>
+<div class="banner"><p>"Your voice and your message are already strong. The shift for you isn't figuring out what to say. It's being recognised more often, by more of the right people."</p></div>
+<p class="body">Good news, and I mean it: your voice is already strong and you've named your client and your work beautifully. This isn't a case of "you're pointed at the wrong person." So the shift for you isn't figuring out what to say. It's being recognised more often, by more of the right people, through enough quality visibility that your Gate 26 voice reaches the rooms where your future clients and invitations hang out. Less second-guessing, more amplifying.</p>
+<h3 class="sec">Your Voice</h3>
+<p class="body">Your voice, going by your design and your own writing, is precise, warm, and quietly powerful. Your Gate 26 means you can say a deep truth in a few words and have it hit. Your defined Head and Ajna give you a clear, organised way of making sense of messy inner stuff. You're not a hype machine and you're not a soft, vague wellness voice. You name the real thing, the gap between outer success and inner truth, with directness and grace. Keep writing exactly like that. The leaders you serve are sharp and a little skeptical. Your no-fluff precision is what earns their trust.</p>
+<h3 class="sec">What Makes You Different</h3>
+<p class="body">You're not a coach who studied high achievers from the outside. You were one. You broke through every outer ceiling, hit the inner ones, did eleven years of deep work, and healed what doctors called permanent. You bring the precision of Quantum Journey Hypnosis that works below the thinking mind, the brains to satisfy a sharp intellect, and the grounded presence of a Seer who isn't impressed or intimidated by status. That combo, lived authority plus deep tools plus the ability to truly see someone, doesn't exist elsewhere. It's your whole differentiation, so keep it dead centre in everything you say.</p>
+<h3 class="sec">The Recognition Tune-Up</h3>
+<p class="body">Because your positioning is already strong, this table isn't about swapping bad language for good. It's about sharpening the few spots where generic phrasing could sneak in, so your message stays as specific and recognisable as possible. Left column: the safe, generic version lots of people default to. Right column: the sharper, truer-to-you version.</p>
+<div class="swap">
+  <div class="h i">Instead Of</div><div class="h s">Say This Instead</div>
+  <div class="c left">Helping people find balance and wellbeing</div><div class="c say">Helping accomplished leaders close the gap between outer success and inner truth</div>
+  <div class="c left">Transformational coaching for a happier life</div><div class="c say">The work for people who have everything and still feel something's missing</div>
+  <div class="c left">Unlock your full potential</div><div class="c say">You've already proven what you can build. This is about who you actually are underneath it</div>
+  <div class="c left">A safe space to explore your feelings</div><div class="c say">A room where you finally don't have to perform the strong, capable one</div>
+  <div class="c left">Reduce stress and find inner peace</div><div class="c say">Coherence: knowing who you are, what you want, and living it instead of performing it</div>
+  <div class="c left">Holistic healing for mind and body</div><div class="c say">Quantum Journey Hypnosis that reaches the truth beneath the thinking mind</div>
+</div>
+<div class="practice stop">
+  <div class="tag">⛔ What to STOP Saying</div>
+  <ul>
+    <li>Generic wellness words like "balance," "wellbeing," and "your best self." Your client has heard them a thousand times and they don't signal the depth you actually offer.</li>
+    <li>Anything that sounds like self-improvement or optimisation. Your client isn't broken and isn't looking for an upgrade. She's looking to come home to herself.</li>
+    <li>Over-explaining the methods before the outcome. Lead with the gap you close and the coherence you create. Let hypnosis and the Coherence Code framework be the how, not the headline.</li>
+    <li>Hedging or softening your authority. Your defined Will knows your worth. Say what you see plainly. Your client trusts directness way more than gentleness.</li>
+  </ul>
+</div>
+<h3 class="sec">What to START Saying, By Open Centre</h3>
+<div class="cardgrid">
+  <div class="minicard"><div class="ix">🗣️ From Your Open Throat</div><div class="ds">"You've spent years being the one with the answer. What if the most important thing in you is the question you've never had space to ask out loud?" · "Everyone listens to you. When's the last time someone actually saw you?"</div></div>
+  <div class="minicard"><div class="ix">💧 From Your Open Solar Plexus</div><div class="ds">"You got everything you worked for. So why does it feel like nothing?" · "There's a grief that comes with achieving the dream and finding the gap is still there. You're allowed to name it."</div></div>
+  <div class="minicard"><div class="ix">🔋 From Your Open Sacral</div><div class="ds">"Exhaustion isn't a badge of commitment. Sometimes it's the only language your body has left to get your attention."</div></div>
+  <div class="minicard"><div class="ix">⚡ From Your Open Root</div><div class="ds">"You keep telling yourself you'll breathe once this next thing is handled. It never comes, does it?"</div></div>
+</div>
+<h3 class="sec">Content Themes That Convert</h3>
+<ul class="spark">
+<li>The gap between outer success and inner truth, and why achieving everything can make it wider, not smaller</li>
+<li>Why the proving that built your success eventually stops working, and what comes after</li>
+<li>The inner ceilings nobody warns you about once you've smashed the outer ones</li>
+<li>What coherence actually is, and why it's different from balance, wellness, or success</li>
+<li>Your own story: proving, arriving, the emptiness, the eleven years, healing what was called permanent</li>
+</ul>
+<h3 class="sec">Your Content Formula</h3>
+<p class="body">When you write a post meant to create recognition, this simple structure carries your Gate 26 voice. The labels are the moves. The lines under them are examples in your voice.</p>
+<div class="formula">
+  <div class="step"><span class="lab">HOOK — name the unspoken thing so precisely the right person stops scrolling</span><div class="ex">"You built the life you were supposed to want. So why is there a quiet voice at 3am asking if this is really it?"</div></div>
+  <div class="step"><span class="lab">AGITATE — show you get why the usual fixes haven't worked</span><div class="ex">"You've done the therapy, the executive coaching, the retreats. They helped a little, around the edges. But none of them reached the actual gap, because the gap isn't a performance problem. It's the distance between who you've become and who you actually are."</div></div>
+  <div class="step"><span class="lab">REFRAME — hand them the truth that flips the whole picture</span><div class="ex">"You were never supposed to choose between outer success and inner truth. Believing you had to is the thing that built the gap. Close that, and you don't lose what you've built. You finally get to live in it."</div></div>
+  <div class="step"><span class="lab">INVITATION — open the door without shoving anyone through it</span><div class="ex">"If this is naming something you've felt for a while, a conversation is the place to start. No pitch. Just an honest look at what's actually going on and whether this is the work for you."</div></div>
+</div>`;
+</script>
+<script>
+/* 11 LOW-TICKET OFFERS */
+CONTENT.offers=`
+<div class="eyebrow2">Your Low-Ticket Offer ✦</div>
+<h2 class="title">Let Them <em>Taste Your Work</em> 🎟️</h2>
+<p class="intro">This is a small, do-it-themselves entry point that lets the right person taste your work before they ever reach out. Someone reads your words, recognises themselves, pays a little, and instantly gets a real feel for what it's like to be guided by you. For a Projector, this does something extra handy: it lets people recognise your gift at low risk, which is exactly how recognition turns into a bigger invitation later. Best part, it runs quietly in the background without eating your live energy.</p>
+<p class="body">This offer is fully self-led. It never needs you on a live call or holding space in real time for a tiny price. That's on purpose. Your live presence is your premium thing. This entry point is built from your signature modality, your Quantum Journey Hypnosis, delivered as recordings so it can serve a lot of people without draining you.</p>
+
+<details class="exp" open><summary>🎧 The Coherence Sessions — $7 <span class="pl">+</span></summary>
+<div class="inner">
+<h5>What It Is</h5><p>A bundle of three guided hypnosis audios, each twelve to fifteen minutes, pulled straight from your Quantum Journey Hypnosis work. Not three random meditations. Three sessions that take a busy high achiever through an actual process, one step at a time, in your voice, from the noise of the performing mind to a real, felt taste of coherence. Short enough to fit into a packed life, deep enough to create a genuine shift. Fully self-led, instant delivery, no live anything.</p>
+<h5>What They Get</h5><ul>
+<li><b>Audio 1 — Arrive.</b> A twelve to fifteen minute journey that drops them out of the busy, doing mind and into the body, so they actually land. The first time many of them have stopped in months.</li>
+<li><b>Audio 2 — Settle.</b> A twelve to fifteen minute session that takes them beneath the surface noise to a place of real regulation and stillness, where the nervous system finally lets go.</li>
+<li><b>Audio 3 — Reconnect.</b> A twelve to fifteen minute journey to the quiet place where their own truth lives, so they leave with a felt sense of coherence, not just a concept of it.</li>
+<li>A short written guide on how to use the three in sequence, and how to return to them again and again for a deeper effect over time.</li>
+</ul>
+<h5>Why It Works</h5><p>Your voice and your Gate 26 transmission are your most magnetic assets, and audio is the purest way to deliver them at scale. A successful, skeptical leader who'd never book a cold anything will happily pay seven dollars for a private experience they can have alone, in the car, at midnight. Three short sessions feel doable to a busy person in a way one long one doesn't, and walking them through an actual process, not a one-off, means they feel real movement. Once they've felt what your guidance does, recognition is locked in.</p>
+<h5>Why It's Worth Way More Than $7</h5><p>Because it's built from the same work you do in premium sessions, and it actually creates a shift, not just information about a shift. A leader who feels even a few minutes of real coherence from a seven-dollar bundle has tasted the real thing. That's the cleanest possible first hit of your gift, and at this price there's almost no reason for the right person to say no.</p>
+</div></details>
+
+<div class="bizbox">
+  <div class="tag">🔗 How This Fits the Bigger Picture</div>
+  <p>The Coherence Sessions at seven dollars let the right person feel your gift at almost zero risk. <b>It deepens recognition without costing you live energy, and it naturally points toward your premium 1:1 work and The Coherence Code.</b> It's not there to make big money on its own. It's there to let the right people recognise your gift at low risk so the genuine invitation can follow. Run it quietly and consistently in the background while your live energy stays reserved for the deep work. Later, if you want, you can build a mid-tier offer on top of it, but one clean, irresistible entry point is the right place to start.</p>
+</div>`;
+
+/* 12 SIGNATURE PROGRAMS */
+CONTENT.programs=`
+<div class="eyebrow2">Your Signature Program Ideas ✦</div>
+<h2 class="title">Programs Built <em>For How You Work</em> 🗝️</h2>
+<p class="intro">Three program options built specifically for your modalities, your Projector energy, and the leaders you serve. Not generic templates. Built for how you actually work: deep, intuitive, high-trust, in focused containers that honour your energy instead of frying it. Two of these you already have in some form. The third gives your gathering gift somewhere to grow.</p>
+
+<details class="exp" open><summary>1️⃣ 1:1 Transition Consulting — The Coherence Container <span class="pl">+</span></summary>
+<div class="inner">
+<h5>Structure</h5><ul>
+<li>A three-month private container, your existing 1:1 work, framed as a premium, high-trust engagement for one leader at a time</li>
+<li>An opening deep-dive session to see the whole person, name the gap precisely, and map where outer success and inner truth split</li>
+<li>A core run of Quantum Journey Hypnosis and consulting sessions that go under the thinking mind to the real material, paced to your energy with proper space between them</li>
+<li>Light async support between sessions for integration, kept inside boundaries that protect your Projector energy</li>
+<li>A closing integration session that names what shifted and maps how they carry coherence forward on their own</li>
+</ul>
+<h5>Why This Works</h5><p>This is your design at its best: a few deep, well-paid relationships instead of a pile of shallow ones. Three months is enough time to do the real work without an open-ended commitment that drains you. It suits your gut authority, which works session by session in the moment, and your 2nd line, which does its most jaw-dropping work in private. Price this as your premium offer. It's the heart of the selective, work-from-anywhere practice you described.</p>
+<div class="feel">"This is for the leader who has built everything they were supposed to build and privately knows something essential is still missing. Three months, in a private container, to close the gap between who you've become and who you actually are."</div>
+</div></details>
+
+<details class="exp"><summary>2️⃣ Quantum Journey Hypnosis — The Coherence Intensive <span class="pl">+</span></summary>
+<div class="inner">
+<h5>Structure</h5><ul>
+<li>A focused, high-intensity engagement built around your Quantum Journey Hypnosis work, for the leader who wants to go straight to the depth rather than commit to three months upfront</li>
+<li>A prep session to build trust, understand their inner landscape, and set the intention</li>
+<li>One or more deep hypnosis sessions that work below the thinking mind, where the real shift happens, spaced to honour both your energy and their integration</li>
+<li>An integration session to make sense of what came up and translate it into how they live and lead</li>
+<li>A guided audio made from or for their journey, so they can return to the state and deepen it on their own</li>
+</ul>
+<h5>Why This Works</h5><p>This is your most distinctive modality packaged as a standalone premium experience. It serves the leader who's curious and ready but not sure about a longer container, and it lets your rarest gift be the doorway. It's intense and concentrated, exactly how a Projector is built to work: full presence in a focused burst, then rest. For a lot of clients, the intensive becomes the recognition moment that leads them into the full three-month container afterward.</p>
+<div class="feel">"Some things can't be reasoned through. This is the work that goes beneath the capable, busy mind to the place your real answers have always lived, and lets you feel coherence instead of just understanding it."</div>
+</div></details>
+
+<details class="exp"><summary>3️⃣ The Coherence Code — The Group Program <span class="pl">+</span></summary>
+<div class="inner">
+<h5>Structure</h5><ul>
+<li>Your twelve-week live group program for a cohort of accomplished people, moving through the five pillars: awareness, regulation and stability, sovereign action, direction, and aligned action</li>
+<li>A mix of pre-recorded teaching they work through on their own time and live group sessions where you guide, see, and work with the room, so your live energy is concentrated, not spread thin</li>
+<li>Guided audio journeys from your hypnosis work woven through the pillars, so the group feels the depth, not just the framework</li>
+<li>A contained group space for connection and shared recognition between sessions</li>
+<li>A founding cohort at one thousand five hundred euros, filled through your warm network, with the rate going up once the model's proven</li>
+</ul>
+<h5>Why This Works</h5><p>This is your Gate 45 gathering energy plus your defined Head and Ajna turned into a scalable offer. The five-pillar structure gives your brain-power a clear container, and the group format lets you serve a lot of people from focused bursts of live energy instead of an endless one-to-one calendar. It's also the seed of the rooms, seminars, and retreats in your three-year vision. Fill the first cohort through your 4th line network, let it prove itself, then grow it.</p>
+<div class="feel">"Twelve weeks, five pillars, one room of people who have achieved everything and are ready for what's beyond the proving. This is where outer success and inner truth stop fighting and start to click into place."</div>
+</div></details>`;
+</script>
+<script>
+/* MONEY PATH */
+CONTENT.money=`
+<div class="eyebrow2">Path to $10K–$20K Months ✦</div>
+<h2 class="title">The Numbers, <em>Your Way</em> 📈</h2>
+<p class="intro">Let's get concrete about money, in a way that fits your design instead of fighting it. None of this leans on a giant audience, daily posting, or a packed calendar. It's all built from your real offers and the way a Projector actually earns: depth, recognition, and selectivity. Here are three realistic routes to ten to twenty thousand a month, and you'll likely blend them.</p>
+<p class="body">A quick note before the numbers. These are illustrative, to show the shape of what's possible from your actual offers, not promises or fixed prices. Set your real prices from your defined Will, your worth, and your market. The point is to show that the spacious, selective practice you want is mathematically very reachable without hustle.</p>
+
+<div class="rev">
+  <div class="rt">Model One — The Premium 1:1 Practice</div>
+  <div class="line"><span>4 private Coherence Container clients</span><span>~$3,000 each / mo</span></div>
+  <div class="line"><span>Built on 3–4 sessions a day, 4 days a week</span><span>your vision exactly</span></div>
+  <div class="total">≈ $12,000 / month from deep 1:1 work alone</div>
+</div>
+<div class="rev">
+  <div class="rt">Model Two — The Blend (1:1 + Intensives + Low-Ticket)</div>
+  <div class="line"><span>3 Coherence Container clients</span><span>~$9,000</span></div>
+  <div class="line"><span>2 Quantum Journey Intensives</span><span>~$5,000</span></div>
+  <div class="line"><span>The Coherence Sessions ($7) running quietly</span><span>~$500–1,500</span></div>
+  <div class="total">≈ $15,000–16,000 / month, more variety, less reliance on any one stream</div>
+</div>
+<div class="rev">
+  <div class="rt">Model Three — The Gatherer (1:1 + The Coherence Code)</div>
+  <div class="line"><span>2–3 Coherence Container clients</span><span>~$6,000–9,000</span></div>
+  <div class="line"><span>Coherence Code cohort (≈10 founding @ €1,500, spread over the launch)</span><span>~$5,000–8,000 / mo equivalent</span></div>
+  <div class="line"><span>The Coherence Sessions ($7)</span><span>~$500</span></div>
+  <div class="total">≈ $12,000–18,000 / month, with your gathering gift carrying real weight</div>
+</div>
+
+<h3 class="sec">The Step-by-Step Path</h3>
+<ol class="steps">
+<li><b>Months 1–2 — Set the foundations.</b> Lock your premium 1:1 pricing from your Will. Build and record The Coherence Sessions ($7 bundle) and let it run quietly in the background. Start tending your 4th line network on purpose, past clients, colleagues, the corporate and wellness people you want to be invited by.</li>
+<li><b>Month 3 — Fill your premium 1:1.</b> Focus on landing three to four Coherence Container clients through recognition and warm invitation. At your premium rate, that alone gets you near the bottom of your range. This is your stable base.</li>
+<li><b>Months 4–5 — Add the intensives.</b> Offer the Quantum Journey Intensive to people who want depth without a full container, including low-ticket buyers who've recognised your gift. This stacks income without adding many hours.</li>
+<li><b>Month 6 — Launch The Coherence Code founding cohort.</b> Fill it through your warm network at the €1,500 founding rate. Let the first group prove the model and generate testimonials and referrals for the next one.</li>
+<li><b>Months 9–12 — Stabilise and become selective.</b> With 1:1, intensives, low-ticket, and a proven group programme all running, your months land in the ten to twenty range. Now you do the most Projector thing of all: get more selective, raise your rates, and protect your energy as recognition grows.</li>
+</ol>
+<div class="bizbox">
+  <div class="tag">💼 Why This Fits Your Design</div>
+  <p>Every model here is built on depth and recognition, not volume and hustle. <b>The biggest lever isn't more clients, it's pricing your work for the transformation and letting your gathering gift carry part of the load.</b> The path honours your energy: a stable base of a few deep 1:1 clients, intensives that earn without filling your calendar, and a group programme that scales your gift through focused bursts of live energy. This is the work-from-anywhere, pick-your-people practice you described, with actual numbers underneath it. It's closer than it feels.</p>
+</div>`;
+</script>
+<script>
+/* 15 NICHE */
+CONTENT.niche=`
+<div class="eyebrow2">Your Possible Niche ✦</div>
+<h2 class="title">Naming What You <em>Actually Do</em> 🎯</h2>
+<p class="intro">Your niche is already strong, so this isn't about reinventing it. It's about saying it cleanly enough that the right person recognises themselves instantly. A niche isn't a cage. It's a signal. The clearer your signal, the faster your soulmate client goes "oh, that's me." Here are two ways to frame the same beautiful work, so you can feel which one lands truest.</p>
+<div class="duo">
+  <div class="bigcard">
+    <h3>Option A — The Coherence Guide for Leaders</h3>
+    <p>You help accomplished executives, founders, and leaders close the gap between outer success and inner truth, using deep work that reaches beneath the performing mind.</p>
+    <p>This framing leads with coherence, your signature word and the thing your whole method delivers. It's clean, distinctive, and it positions you as a category of one rather than another coach. It pairs perfectly with The Coherence Code and your five pillars.</p>
+  </div>
+  <div class="bigcard">
+    <h3>Option B — The Transition Guide for the Accomplished</h3>
+    <p>You guide successful leaders through the inner transition that comes after they've achieved everything, from proving and performing to living as who they actually are.</p>
+    <p>This framing leads with transition, which matches your existing Transition Consulting language and speaks to the specific life moment your client is in. It's powerful for someone who knows something needs to change but can't yet name it as a "coherence" gap.</p>
+  </div>
+</div>
+<h3 class="sec">Two Niche Statements to Try On</h3>
+<div class="feel">"I help accomplished leaders who have everything and still feel something's missing close the gap between outer success and inner truth, so they can finally live as who they are instead of performing who they became."</div>
+<div class="feel">"I guide successful executives and founders through the inner transition that begins once the outer goals are met, using Quantum Journey Hypnosis and the work of coherence to take them beneath the performing mind to the truth that's been waiting there."</div>
+<h3 class="sec">Who You Serve Now vs Who It's Built For</h3>
+<div class="ba">
+  <div class="h b">Who You Serve Now</div><div class="h a">Who It's Truly Built For</div>
+  <div class="c left">Anyone successful who senses something's missing</div><div class="c">The specific leader who has done the therapy, coaching, and retreats and still hasn't reached the root</div>
+  <div class="c left">People wanting wellbeing or balance</div><div class="c">People wanting coherence, to know who they are and live it instead of performing it</div>
+  <div class="c left">A broad sense of high achievers</div><div class="c">Executives, founders, and senior leaders, often 40s–50s, quietly carrying the gap behind real composure</div>
+  <div class="c left">Those open to inner work in general</div><div class="c">Those ready for the transition beyond proving, who recognise you because you've lived it too</div>
+</div>
+<div class="bizbox">
+  <div class="tag">💡 A Note on Choosing</div>
+  <p>You don't have to pick one forever. Your gut will know which framing feels most alive when you say it out loud, so trust that over any logic. <b>The fuller version of this, your dedicated Niche and Soulmate Client document, gets built once you've landed the framing that feels truest.</b> For now, notice which of the two options above makes your body go "yes, that one." That's your Splenic Authority choosing your niche for you.</p>
+</div>`;
+
+/* 16 USE WITH AI */
+CONTENT.ai=`
+<div class="eyebrow2">How to Use This With Claude AI ✦</div>
+<h2 class="title">Make AI Sound <em>Like You</em> 🤖</h2>
+<p class="intro">This blueprint is most powerful when it's not just sitting in a folder. One of the best ways to use it is to feed it to an AI assistant like Claude so it can help you write content, plan offers, and make decisions that actually fit your design, in your voice, instead of generic coach-bot mush. Here's how.</p>
+<p class="body">The trick is to give the AI your context once, clearly, so everything it helps you with afterward is shaped by who you actually are. Below is a custom instruction you can paste in at the start of a chat, or save into the AI's settings, so it knows your design, your client, your offers, and your voice. Tweak it freely. It's a starting point, not gospel.</p>
+<div class="prompt">
+  <div class="pt">✦ Your Custom AI Instruction — tap to copy</div>
+  <div class="ptext" id="aiPrompt">You are helping me with my business, Everheart Consulting. Here's who I am so everything you help me with fits me.
+
+I'm Amala. I'm a Human Design Projector with a 2/4 profile, Splenic Authority, and the Right Angle Cross of Rulership. That means: I grow through recognition and invitation, not chasing or hustle. I make decisions from my gut in the moment, not by over-thinking. I need real alone time to recharge, and my business grows through warm relationships and referrals, not cold marketing or daily posting. Please never suggest hustle-based, high-volume, or "post every day" strategies. They don't fit me.
+
+My work: I help accomplished executives, founders, and leaders close the gap between outer success and inner truth. They've built the whole successful life and quietly feel something's missing. I help them reach coherence, knowing who they are, what they want, and living it instead of performing it. My modalities are 1:1 Transition Consulting, Quantum Journey Hypnosis, and a 12-week group program called The Coherence Code, built on five pillars: awareness, regulation and stability, sovereign action, direction, and aligned action.
+
+My voice: precise, warm, and quietly powerful. I name the real thing directly and with grace. No hype, no fluffy wellness clichés, no buzzwords like "balance," "best self," or "unlock your potential." I lead with the gap I close and the coherence I create, not with my methods. Write the way I'd actually talk to a smart, slightly skeptical person, like a human, not a brochure. No em dashes.
+
+When you help me write or plan, always work from this. Keep it true to my design, my client, and my voice.</div>
+  <button onclick="copyPrompt()" id="copyBtn">Copy Instruction ✦</button>
+</div>
+<div class="practice">
+  <div class="tag">✨ Ways to Use It</div>
+  <ul>
+    <li><b>Content.</b> "Write me a post using my HOOK, AGITATE, REFRAME, INVITATION formula about the inner ceilings that show up after the outer ones." It'll sound like you, not a bot.</li>
+    <li><b>Offers and launches.</b> "Help me plan the warm-network launch for my Coherence Code founding cohort, in a way that fits my Projector design." No hustle tactics, because you told it not to.</li>
+    <li><b>Decisions.</b> "Here's an opportunity I'm weighing. Ask me the questions that help me check it against my strategy and gut." Use it as a thinking partner, then let your Splenic Authority make the actual call.</li>
+    <li><b>Messaging.</b> "Rewrite this in my voice" or "sharpen this so my soulmate client recognises herself." Paste your draft and let it tune to you.</li>
+  </ul>
+</div>
+<div class="bizbox">
+  <div class="tag">💼 One Important Thing</div>
+  <p>AI is a brilliant assistant, but it's not your authority. <b>Use it to draft, plan, and think, then always run the final call through your own gut.</b> Your Splenic Authority is the decision-maker, not the machine. Let AI handle the words and the structure so you save energy for the deep work only you can do. That's using it exactly the way your design wants: less grind, more of your genius where it actually counts.</p>
+</div>`;
+
+/* 17 CLOSE */
+CONTENT.close=`
+<div class="eyebrow2">How to Use This Blueprint ✦</div>
+<h2 class="title">Where To <em>Go From Here</em> 🌙</h2>
+<p class="intro">You've got the whole map now: how you're wired, what you're here for, who you serve, how you attract them, what to offer, and how the money actually adds up. Here's how to actually use it, instead of letting it become another beautiful thing you read once and file away.</p>
+<div class="banner"><p>"You don't need to become someone louder or busier. You need to be recognised for something rare and invited into the rooms that matter. That's the whole game."</p></div>
+<h3 class="sec">Start With Your Anchors</h3>
+<p class="body">Come back to your Anchor Statements whenever your brain gets loud, when you feel the pull to hustle, chase, or hide. They're the quickest way to drop back into your design when the noise gets loud. You don't have to implement everything at once. Pick the one shift that feels most alive right now and start there. Your gut already knows which one it is.</p>
+<div class="practice">
+  <div class="tag">🧭 A Simple Way In</div>
+  <ul>
+    <li><b>Read it once, fully, then return one tab at a time.</b> This is built to be revisited, not consumed in a single sitting and forgotten.</li>
+    <li><b>Pick your one next move.</b> Maybe it's pricing your 1:1 from your Will. Maybe it's building one low-ticket offer. Maybe it's warming up your network for The Coherence Code. One thing.</li>
+    <li><b>Run your decisions through your gut, not your head.</b> When something here excites you, that's your Splenic Authority pointing. Follow the yes.</li>
+    <li><b>Use the AI instruction</b> to take the writing and planning load off your plate, so your energy stays free for the deep work.</li>
+    <li><b>Protect your rhythm</b> as you grow. The point of all of this is a business that fits you, not one that quietly turns into the thing you were trying to escape.</li>
+  </ul>
+</div>
+<div class="bizbox">
+  <div class="tag">📚 A Note on Your Three Documents</div>
+  <p>This blueprint is one of three. There's also your dedicated <b>Niche and Soulmate Client document</b>, built once you've landed the framing that feels truest, and your <b>Claude AI instructions</b>, which I'll send separately so your AI assistant always writes in your voice and your design (you'll find the full instruction in the Use With AI tab here too). Together they give you the full picture. This one is the foundation: who you are and how your business is meant to work. Start here, get it in your body, and the rest builds naturally on top of it.</p>
+</div>
+<div class="cta">
+  <h3>Ready?</h3>
+  <p>You've already done the hardest part. You broke through every outer ceiling, did the deep inner work, and found the way through. Building a business that fits you isn't harder than that. It's lighter, because for the first time you're working with your design instead of against it. Go be recognised. The right people are waiting to be guided by exactly you.</p>
+  <a href="https://everheartconsulting.com" target="_blank" rel="noopener">Step Into Your Aligned Business ✦</a>
+</div>
+<footer>
+  <div class="sig">I believe in you. To living our dreams.</div>
+  <div>— Aurailia · Everheart Consulting · everheartconsulting.com</div>
+</footer>`;
+</script>
+<script>
+/* ===== NAV + RENDER ===== */
+const TABS=[
+  {id:"start",   n:"01", label:"Start Here"},
+  {id:"welcome", n:"02", label:"Welcome"},
+  {id:"design",  n:"03", label:"Your Design"},
+  {id:"cross",   n:"04", label:"Soul Purpose"},
+  {id:"open",    n:"05", label:"Open Centres"},
+  {id:"defined", n:"06", label:"Defined Centres"},
+  {id:"client",  n:"07", label:"Soulmate Client"},
+  {id:"wealth",  n:"08", label:"Wealth Codes"},
+  {id:"rhythm",  n:"09", label:"Working Rhythm"},
+  {id:"message", n:"10", label:"Magnetic Messaging"},
+  {id:"offers",  n:"11", label:"Low-Ticket Offer"},
+  {id:"programs",n:"12", label:"Signature Programs"},
+  {id:"money",   n:"13", label:"Path to $10–20K"},
+  {id:"niche",   n:"14", label:"Your Niche"},
+  {id:"ai",      n:"15", label:"Use With AI"},
+  {id:"close",   n:"16", label:"How to Use This"}
+];
+
+const navlist=document.getElementById('navlist');
+const mtabs=document.getElementById('mtabs');
+const panels=document.getElementById('panels');
+
+TABS.forEach((t,i)=>{
+  const b=document.createElement('button');
+  b.innerHTML=`<span class="nx">${t.n}</span> ${t.label}`;
+  b.dataset.id=t.id; b.onclick=()=>activate(t.id);
+  navlist.appendChild(b);
+
+  const m=document.createElement('button');
+  m.className='mtab'; m.textContent=t.label; m.dataset.id=t.id; m.onclick=()=>activate(t.id);
+  mtabs.appendChild(m);
+
+  const p=document.createElement('section');
+  p.className='panel'; p.id='panel-'+t.id;
+  p.innerHTML=CONTENT[t.id]||('<h2 class="title">'+t.label+'</h2>');
+  panels.appendChild(p);
+});
+
+function activate(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='panel-'+id));
+  navlist.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.id===id));
+  mtabs.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.id===id));
+  const am=mtabs.querySelector('button.active'); if(am&&am.scrollIntoView)am.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* sub-tab switching — shared by desktop buttons and mobile dropdown */
+function showSub(sub){
+  // find the panel that contains this subpanel
+  const target=document.getElementById('sub-'+sub);
+  if(!target)return;
+  const panel=target.closest('.panel');
+  // toggle panels
+  panel.querySelectorAll('.subpanel').forEach(sp=>sp.classList.toggle('active',sp.id==='sub-'+sub));
+  // sync desktop buttons
+  panel.querySelectorAll('.subtab').forEach(x=>x.classList.toggle('active',x.dataset.sub===sub));
+  // sync mobile dropdown
+  panel.querySelectorAll('.subnav-select select').forEach(sel=>{
+    if([...sel.options].some(o=>o.value===sub)) sel.value=sub;
+  });
+}
+function selectSub(sub){ showSub(sub); }
+document.addEventListener('click',e=>{
+  const st=e.target.closest('.subtab');
+  if(!st)return;
+  showSub(st.dataset.sub);
+});
+
+/* copy prompt */
+function copyPrompt(){
+  const txt=document.getElementById('aiPrompt').innerText;
+  const btn=document.getElementById('copyBtn');
+  const done=()=>{btn.textContent='Copied ✓';btn.classList.add('copied');setTimeout(()=>{btn.textContent='Copy Instruction ✦';btn.classList.remove('copied');},2000);};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done).catch(()=>fallbackCopy(txt,done));}
+  else fallbackCopy(txt,done);
+}
+function fallbackCopy(txt,done){
+  const ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();
+  try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);
+}
+
+/* to top */
+const toTop=document.getElementById('toTop');
+window.addEventListener('scroll',()=>{toTop.classList.toggle('show',window.scrollY>500);});
+toTop.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+
+/* init */
+activate('start');
+</script>
+</body>
+</html>
