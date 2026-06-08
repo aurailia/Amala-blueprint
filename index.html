@@ -284,7 +284,8 @@ footer .sig{font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;back
 .toTop{position:fixed;bottom:22px;right:22px;width:46px;height:46px;border-radius:50%;background:var(--grad);border:none;color:#1a1330;font-size:1.1rem;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:70;box-shadow:0 10px 26px -10px rgba(255,143,199,.7)}
 .toTop.show{opacity:1;pointer-events:auto}.toTop:hover{transform:translateY(-4px)}
 /* ===== HOME / LANDING SCREEN ===== */
-.panel.home{min-height:calc(100vh - 40px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 40px}
+/* layout only applies when active; default .panel{display:none} still hides it otherwise */
+.panel.home.active{min-height:calc(100vh - 40px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 40px}
 .home .home-mark{width:74px;height:74px;border-radius:20px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:2rem;box-shadow:0 18px 40px -14px rgba(155,109,255,.6);margin-bottom:30px}
 .home .home-welcome{font-size:.82rem;letter-spacing:.34em;text-transform:uppercase;color:#8a3fb0;font-weight:700;margin-bottom:18px}
 .home h1{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.04;letter-spacing:-.015em;color:#1a1326;margin-bottom:6px;max-width:16ch}
@@ -297,7 +298,7 @@ footer .sig{font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;back
 .home .home-hint{margin-top:18px;font-size:.9rem;color:#6b5a82}
 .home .home-hint b{color:#8a3fb0}
 @media(max-width:980px){
-  .panel.home{min-height:calc(100vh - 220px);padding:48px 26px}
+  .panel.home.active{min-height:calc(100vh - 220px);padding:48px 26px}
   .home .home-mark{width:60px;height:60px;font-size:1.6rem;margin-bottom:22px}
 }
 
@@ -416,7 +417,7 @@ footer .sig{font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;back
 
 <!-- MOBILE TOP BAR -->
 <div class="mobilebar">
-  <div class="mbrand" onclick="goHome()" style="cursor:pointer"><div class="logo">✦</div><div class="t">Amala's Blueprint</div></div>
+  <div class="mbrand" id="mbrandHome" style="cursor:pointer"><div class="logo">✦</div><div class="t">Amala's Blueprint</div></div>
   <div class="mwho">Amala — you're a <b>Projector 2/4</b>, Splenic Authority, Right Angle Cross of Rulership ✦</div>
   <div class="mtabs" id="mtabs"></div>
 </div>
@@ -424,7 +425,7 @@ footer .sig{font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;back
 <div class="shell">
   <!-- SIDEBAR -->
   <aside class="sidebar">
-    <div class="brand" onclick="goHome()"><div class="logo">✦</div><div class="bt">Amala's <span>Blueprint</span></div></div>
+    <div class="brand" id="brandHome"><div class="logo">✦</div><div class="bt">Amala's <span>Blueprint</span></div></div>
     <div class="side-name">Amala Christie Eberhard</div>
     <div class="side-sub">Human Design Business Blueprint</div>
     <nav><ul class="navlist" id="navlist"></ul></nav>
@@ -508,7 +509,7 @@ CONTENT.home=`
 <h1>This is your <em>Business Alignment Blueprint</em></h1>
 <div class="home-type">✦ You are a 2/4 Projector</div>
 <p class="home-line">A complete, energetic map of how you're wired to work, sell, show up, and build a business that brings the right people to you — without the hustle.</p>
-<button class="home-start" onclick="activate('start')">Start Here →</button>
+<button class="home-start" id="homeStartBtn">Start Here →</button>
 <div class="home-hint">Or jump to any section from the menu. Tap <b>Amala's Blueprint</b> anytime to come back here.</div>
 `;
 </script>
@@ -593,7 +594,7 @@ CONTENT.design=`
   <button class="subtab" data-sub="d-profile">✧ Profile</button>
 </div>
 <div class="subnav-select" data-group="design">
-  <select onchange="selectSub(this.value)">
+  <select class="subnav-dd">
     <option value="d-energy">✦ Energy Type</option>
     <option value="d-strategy">◆ Strategy</option>
     <option value="d-authority">★ Authority</option>
@@ -739,7 +740,7 @@ CONTENT.cross=`
   <button class="subtab" data-sub="c-money">💰 Money & Rulership</button>
 </div>
 <div class="subnav-select" data-group="cross">
-  <select onchange="selectSub(this.value)">
+  <select class="subnav-dd">
     <option value="c-gates">✦ The Four Gates</option>
     <option value="c-money">💰 Money &amp; Rulership</option>
   </select>
@@ -1281,7 +1282,7 @@ My work: I help accomplished executives, founders, and leaders close the gap bet
 My voice: precise, warm, and quietly powerful. I name the real thing directly and with grace. No hype, no fluffy wellness clichés, no buzzwords like "balance," "best self," or "unlock your potential." I lead with the gap I close and the coherence I create, not with my methods. Write the way I'd actually talk to a smart, slightly skeptical person, like a human, not a brochure. No em dashes.
 
 When you help me write or plan, always work from this. Keep it true to my design, my client, and my voice.</div>
-  <button onclick="copyPrompt()" id="copyBtn">Copy Instruction ✦</button>
+  <button id="copyBtn">Copy Instruction ✦</button>
 </div>
 <div class="practice">
   <div class="tag">✨ Ways to Use It</div>
@@ -1389,6 +1390,13 @@ function activate(id){
 }
 function goHome(){ activate('home'); }
 
+/* delegated click handling (robust against injected innerHTML + sandbox CSP that blocks inline onclick) */
+document.addEventListener('click',e=>{
+  if(e.target.closest('#brandHome,#mbrandHome')){ goHome(); return; }
+  if(e.target.closest('#homeStartBtn')){ activate('start'); return; }
+  if(e.target.closest('#copyBtn')){ copyPrompt(); return; }
+});
+
 /* sub-tab switching — shared by desktop buttons and mobile dropdown */
 function showSub(sub){
   // find the panel that contains this subpanel
@@ -1405,6 +1413,12 @@ function showSub(sub){
   });
 }
 function selectSub(sub){ showSub(sub); }
+/* mobile sub-tab dropdowns (delegated, since panels are injected via innerHTML) */
+document.addEventListener('change',e=>{
+  const sel=e.target.closest('.subnav-dd');
+  if(!sel)return;
+  showSub(sel.value);
+});
 document.addEventListener('click',e=>{
   const st=e.target.closest('.subtab');
   if(!st)return;
