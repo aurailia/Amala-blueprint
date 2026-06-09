@@ -63,6 +63,12 @@ body{font-family:'Outfit',sans-serif;background:var(--ink);color:var(--text);lin
 .side-cta:hover{transform:translateY(-2px)}
 
 .content{flex:1;min-width:0;padding:0 0 80px}
+@media(min-width:981px){
+  /* desktop: each panel scrolls inside a fixed-height content column so one tall
+     panel can't keep growing the whole document (prevents the artifact frame from
+     repeatedly re-measuring/reloading on long tabs like Practices) */
+  .content{height:100vh;overflow-y:auto;padding-bottom:0;scroll-behavior:auto}
+}
 
 /* ===== SLIM STICKY IDENTITY BAR ===== */
 .idbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
@@ -84,7 +90,7 @@ body{font-family:'Outfit',sans-serif;background:var(--ink);color:var(--text);lin
 .eyebrow2{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--pink);font-weight:700;margin-bottom:14px}
 .panel h2.title{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.04;letter-spacing:-.01em;margin-bottom:8px}
 .panel h2.title em{font-style:italic;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.panel .intro{font-size:1.12rem;line-height:1.75;color:var(--text);opacity:.92;max-width:940px;margin:14px 0 8px}
+.panel .intro{font-size:1.12rem;line-height:1.75;color:var(--text);opacity:.92;max-width:1010px;margin:14px 0 8px}
 
 /* banner pull-quote */
 .banner{margin:30px 0;padding:22px 26px;border-left:3px solid;border-image:var(--grad) 1;
@@ -93,7 +99,7 @@ body{font-family:'Outfit',sans-serif;background:var(--ink);color:var(--text);lin
 
 h3.sec{font-family:'Fraunces',serif;font-weight:400;font-size:1.7rem;margin:40px 0 8px;color:#fff}
 h4.sub{font-size:.74rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin:30px 0 12px}
-p.body{color:var(--text-soft);margin-bottom:16px;font-size:1.08rem;line-height:1.8;max-width:940px}
+p.body{color:var(--text-soft);margin-bottom:16px;font-size:1.08rem;line-height:1.8;max-width:1010px}
 p.body b{color:#fff;font-weight:600}
 em.i{font-style:italic;color:#fff}
 
@@ -124,11 +130,11 @@ em.i{font-style:italic;color:#fff}
 .practice.start li::before{content:"✨";font-size:.95rem}
 
 /* spark bullets */
-ul.spark{list-style:none;margin:6px 0 18px;max-width:940px}
+ul.spark{list-style:none;margin:6px 0 18px;max-width:1010px}
 ul.spark li{position:relative;padding-left:28px;margin-bottom:12px;color:var(--text-soft);font-size:1.05rem;line-height:1.7}
 ul.spark li::before{content:"✦";position:absolute;left:0;top:1px;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-size:.85rem}
 ul.spark li b{color:#fff;font-weight:600}
-ol.steps{list-style:none;counter-reset:s;margin:6px 0 18px;max-width:940px}
+ol.steps{list-style:none;counter-reset:s;margin:6px 0 18px;max-width:1010px}
 ol.steps li{position:relative;padding-left:44px;margin-bottom:13px;color:var(--text-soft);font-size:1.02rem}
 ol.steps li b{color:#fff}
 ol.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:-1px;width:28px;height:28px;border-radius:50%;background:rgba(255,143,199,.12);border:1px solid var(--line);color:var(--pink);font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center}
@@ -422,18 +428,32 @@ footer .sig{font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;back
 @media(max-width:1100px){.pgrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:680px){.pgrid{grid-template-columns:1fr}}
 /* ===== EFT TAPPING SECTION ===== */
-.eft-intro{background:linear-gradient(120deg,rgba(122,79,208,.1),rgba(90,215,208,.1));border:1px solid rgba(138,63,176,.22);border-radius:18px;padding:24px 28px;margin:22px 0;max-width:940px}
+.eft-intro{background:linear-gradient(120deg,rgba(122,79,208,.1),rgba(90,215,208,.1));border:1px solid rgba(138,63,176,.22);border-radius:18px;padding:24px 28px;margin:22px 0;max-width:1010px}
 .eft-intro p{color:#2a2236;font-size:1.04rem;line-height:1.75;margin:0 0 10px}
 .eft-intro p:last-child{margin:0}
 .eft-intro b{color:#1a1326}
-.eft-points{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px;max-width:940px}
+.eft-points{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px;max-width:1010px}
 .eft-points .pt{font-size:.82rem;font-weight:600;color:#5a3a82;background:rgba(138,63,176,.08);border:1px solid rgba(138,63,176,.25);border-radius:999px;padding:7px 14px}
-.eft-step{border:1px solid rgba(138,63,176,.18);border-radius:16px;margin:14px 0;background:rgba(255,255,255,.66);overflow:hidden;max-width:940px}
-.eft-step .eh{display:flex;align-items:center;gap:12px;padding:16px 22px;border-bottom:1px solid rgba(138,63,176,.12)}
-.eft-step .eh .epoint{flex:0 0 auto;font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--grad);padding:6px 12px;border-radius:999px}
-.eft-step .eh .ename{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:700;background:linear-gradient(110deg,#d6357f,#7a3fd0 52%,#1f9b94);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#7a3fd0}
-.eft-step .ebody{padding:16px 22px;color:#2a2236;font-size:1.04rem;line-height:1.75;font-style:italic}
-.eft-round{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:#1f8a82;margin:30px 0 6px}
+.eft-box{border:1px solid rgba(138,63,176,.18);border-radius:16px;margin:10px 0 6px;background:rgba(255,255,255,.66);overflow:hidden;max-width:1010px}
+.eft-row{display:flex;gap:16px;padding:13px 22px;border-bottom:1px solid rgba(138,63,176,.1)}
+.eft-row:last-child{border-bottom:none}
+.eft-row .ename{flex:0 0 120px;font-family:'Fraunces',serif;font-size:1rem;font-weight:700;background:linear-gradient(110deg,#d6357f,#7a3fd0 52%,#1f9b94);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#7a3fd0;line-height:1.5}
+.eft-row .eline{flex:1;color:#2a2236;font-size:1.02rem;line-height:1.6;font-style:italic}
+.eft-setup{border:1px solid rgba(179,71,154,.3);border-radius:16px;margin:10px 0 6px;padding:18px 22px;background:linear-gradient(120deg,rgba(179,71,154,.08),rgba(122,79,208,.05));max-width:1010px}
+.eft-setup .ename{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700;background:linear-gradient(110deg,#d6357f,#7a3fd0 52%,#1f9b94);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#7a3fd0;display:block;margin-bottom:6px}
+.eft-setup .eline{color:#2a2236;font-size:1.04rem;line-height:1.7;font-style:italic}
+.eft-round{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:#1f8a82;margin:24px 0 4px}
+@media(max-width:560px){.eft-row{flex-direction:column;gap:2px}.eft-row .ename{flex:none}}
+/* ===== AI PROMPT CARDS ===== */
+.promptcard{border:1px solid rgba(138,63,176,.2);border-radius:16px;margin:14px 0;background:rgba(255,255,255,.66);overflow:hidden;max-width:1010px}
+.promptcard .pchead{display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid rgba(138,63,176,.12)}
+.promptcard .pccat{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#1f8a82}
+.promptcard .pcname{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;background:linear-gradient(110deg,#d6357f,#7a3fd0 55%,#1f9b94);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#7a3fd0}
+.promptcard .pctext{padding:16px 20px;color:#2a2236;font-size:1.02rem;line-height:1.7;font-style:italic}
+.promptcard .pcfoot{padding:0 20px 16px}
+.promptcard .pccopy{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;color:#1a1330;background:var(--grad);border:none;padding:8px 18px;border-radius:999px;cursor:pointer;transition:transform .2s}
+.promptcard .pccopy:hover{transform:translateY(-2px)}
+.promptcard .pccopy.copied{background:#2bb3ab;color:#fff}
 /* ===== SIGNATURE PROGRAM PRICING ===== */
 .priceblock{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin:16px 0 4px;padding:16px 20px;border-radius:14px;background:linear-gradient(120deg,rgba(179,71,154,.1),rgba(122,79,208,.07));border:1px solid rgba(179,71,154,.28)}
 .priceblock .plab{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#9a6b00;width:100%;margin-bottom:2px}
@@ -1169,30 +1189,34 @@ CONTENT.practices=`
   <p><b>How to use it:</b> Tap each point gently 5 to 7 times while saying the line out loud or in your head. Move through the points in order. Do the setup three times on the side of your hand first, then run the rounds. Come back to it whenever the noise gets loud, before a launch, or any time you feel the old pressure to push.</p>
 </div>
 <div class="eft-round">The Setup (Karate Chop · say 3 times)</div>
-<div class="eft-step">
-  <div class="eh"><span class="ename">Side of Hand</span></div>
-  <div class="ebody">&#x201C;Even though I feel the pressure to push, prove, and do more to be worthy, I&#x2019;m a Projector, and I deeply honour that I&#x2019;m built to be recognised, not to chase. I accept myself completely.&#x201D;</div>
+<div class="eft-setup">
+  <span class="ename">Side of Hand</span>
+  <span class="eline">&#x201C;Even though I feel the pressure to push, prove, and do more to be worthy, I&#x2019;m a Projector, and I deeply honour that I&#x2019;m built to be recognised, not to chase. I accept myself completely.&#x201D;</span>
 </div>
 
 <div class="eft-round">Round One &#x2014; Releasing the Push</div>
-<div class="eft-step"><div class="eh"><span class="ename">Eyebrow</span></div><div class="ebody">&#x201C;All this pressure to do more, post more, prove more.&#x201D;</div></div>
-<div class="eft-step"><div class="eh"><span class="ename">Side of Eye</span></div><div class="ebody">&#x201C;Some of this urgency isn&#x2019;t even mine. My open Root just amplifies it.&#x201D;</div></div>
-<div class="eft-step"><div class="eh"><span class="ename">Under Eye</span></div><div class="ebody">&#x201C;I&#x2019;ve been running on a battery I was never issued.&#x201D;</div></div>
-<div class="eft-step"><div class="eh"><span class="ename">Under Nose</span></div><div class="ebody">&#x201C;I don&#x2019;t have to hustle my way to being seen.&#x201D;</div></div>
-<div class="eft-step"><div class="eh"><span class="ename">Chin</span></div><div class="ebody">&#x201C;The proving got me here. It doesn&#x2019;t have to carry me forward.&#x201D;</div></div>
-<div class="eft-step"><div class="eh"><span class="ename">Collarbone</span></div><div class="ebody">&#x201C;I&#x2019;m allowed to wait for the invitation.&#x201D;</div></div>
-<div class="eft-step"><div class="eh"><span class="ename">Under Arm</span></div><div class="ebody">&#x201C;I&#x2019;m allowed to rest between the bursts.&#x201D;</div></div>
-<div class="eft-step"><div class="eh"><span class="ename">Top of Head</span></div><div class="ebody">&#x201C;I release the need to chase what&#x2019;s meant to come to me.&#x201D;</div></div>
+<div class="eft-box">
+  <div class="eft-row"><span class="ename">Eyebrow</span><span class="eline">&#x201C;All this pressure to do more, post more, prove more.&#x201D;</span></div>
+  <div class="eft-row"><span class="ename">Side of Eye</span><span class="eline">&#x201C;Some of this urgency isn&#x2019;t even mine. My open Root just amplifies it.&#x201D;</span></div>
+  <div class="eft-row"><span class="ename">Under Eye</span><span class="eline">&#x201C;I&#x2019;ve been running on a battery I was never issued.&#x201D;</span></div>
+  <div class="eft-row"><span class="ename">Under Nose</span><span class="eline">&#x201C;I don&#x2019;t have to hustle my way to being seen.&#x201D;</span></div>
+  <div class="eft-row"><span class="ename">Chin</span><span class="eline">&#x201C;The proving got me here. It doesn&#x2019;t have to carry me forward.&#x201D;</span></div>
+  <div class="eft-row"><span class="ename">Collarbone</span><span class="eline">&#x201C;I&#x2019;m allowed to wait for the invitation.&#x201D;</span></div>
+  <div class="eft-row"><span class="ename">Under Arm</span><span class="eline">&#x201C;I&#x2019;m allowed to rest between the bursts.&#x201D;</span></div>
+  <div class="eft-row"><span class="ename">Top of Head</span><span class="eline">&#x201C;I release the need to chase what&#x2019;s meant to come to me.&#x201D;</span></div>
+</div>
 
 <div class="eft-round">Round Two &#x2014; Coming Home to Your Worth</div>
-<div class="eft-step"><div class="eh"><span class="ename">Eyebrow</span></div><div class="ebody">&#x201C;My worth was never up for negotiation.&#x201D;</div></div>
-<div class="eft-step"><div class="eh"><span class="ename">Side of Eye</span></div><div class="ebody">&#x201C;My defined Will already knows what I&#x2019;m worth.&#x201D;</div></div>
-<div class="eft-step"><div class="eh"><span class="ename">Under Eye</span></div><div class="ebody">&#x201C;I can guard my cave without guilt. My genius recharges there.&#x201D;</div></div>
-<div class="eft-step"><div class="eh"><span class="ename">Under Nose</span></div><div class="ebody">&#x201C;I trust the first quiet thing my gut tells me.&#x201D;</div></div>
-<div class="eft-step"><div class="eh"><span class="ename">Chin</span></div><div class="ebody">&#x201C;I set down what I absorbed today. It was never mine to carry.&#x201D;</div></div>
-<div class="eft-step"><div class="eh"><span class="ename">Collarbone</span></div><div class="ebody">&#x201C;The right people recognise me. They&#x2019;re already on their way.&#x201D;</div></div>
-<div class="eft-step"><div class="eh"><span class="ename">Under Arm</span></div><div class="ebody">&#x201C;I healed what was called permanent. That&#x2019;s my authority.&#x201D;</div></div>
-<div class="eft-step"><div class="eh"><span class="ename">Top of Head</span></div><div class="ebody">&#x201C;I am seen, I am rested, and I do my deep work from a full cup.&#x201D;</div></div>
+<div class="eft-box">
+  <div class="eft-row"><span class="ename">Eyebrow</span><span class="eline">&#x201C;My worth was never up for negotiation.&#x201D;</span></div>
+  <div class="eft-row"><span class="ename">Side of Eye</span><span class="eline">&#x201C;My defined Will already knows what I&#x2019;m worth.&#x201D;</span></div>
+  <div class="eft-row"><span class="ename">Under Eye</span><span class="eline">&#x201C;I can guard my cave without guilt. My genius recharges there.&#x201D;</span></div>
+  <div class="eft-row"><span class="ename">Under Nose</span><span class="eline">&#x201C;I trust the first quiet thing my gut tells me.&#x201D;</span></div>
+  <div class="eft-row"><span class="ename">Chin</span><span class="eline">&#x201C;I set down what I absorbed today. It was never mine to carry.&#x201D;</span></div>
+  <div class="eft-row"><span class="ename">Collarbone</span><span class="eline">&#x201C;The right people recognise me. They&#x2019;re already on their way.&#x201D;</span></div>
+  <div class="eft-row"><span class="ename">Under Arm</span><span class="eline">&#x201C;I healed what was called permanent. That&#x2019;s my authority.&#x201D;</span></div>
+  <div class="eft-row"><span class="ename">Top of Head</span><span class="eline">&#x201C;I am seen, I am rested, and I do my deep work from a full cup.&#x201D;</span></div>
+</div>
 
 <div class="eft-intro" style="margin-top:24px">
   <p><b>To close:</b> take one slow breath, drop your hands, and notice how your body feels now versus when you started. If a particular line brought something up, tap through it again. Your Splenic gut will tell you when you&#x2019;re complete &#x2014; you&#x2019;ll feel a quiet settling, like something clicked back into place.</p>
@@ -1425,11 +1449,49 @@ When you help me write or plan, always work from this. Keep it true to my design
 <div class="practice">
   <div class="tag">✨ Ways to Use It</div>
   <ul>
-    <li><b>Content.</b> "Write me a post using my HOOK, AGITATE, REFRAME, INVITATION formula about the inner ceilings that show up after the outer ones." It'll sound like you, not a bot.</li>
-    <li><b>Offers and launches.</b> "Help me plan the warm-network launch for my Coherence Code founding cohort, in a way that fits my Projector design." No hustle tactics, because you told it not to.</li>
-    <li><b>Decisions.</b> "Here's an opportunity I'm weighing. Ask me the questions that help me check it against my strategy and gut." Use it as a thinking partner, then let your Splenic Authority make the actual call.</li>
-    <li><b>Messaging.</b> "Rewrite this in my voice" or "sharpen this so my soulmate client recognises herself." Paste your draft and let it tune to you.</li>
+    <li><b>Content.</b> Ask it to write posts using your HOOK, AGITATE, REFRAME, INVITATION formula. It'll sound like you, not a bot.</li>
+    <li><b>Offers and launches.</b> Plan your Coherence Code launch in a way that fits your Projector design, no hustle tactics.</li>
+    <li><b>Decisions.</b> Use it as a thinking partner to check an opportunity against your strategy, then let your gut make the call.</li>
+    <li><b>Messaging.</b> Paste a draft and have it sharpen the language so your soulmate client recognises herself.</li>
   </ul>
+</div>
+<h3 class="sec">Prompts You Can Copy &amp; Use 📋</h3>
+<p class="body">These are built for your exact design. Tap copy, paste into your Claude Project (after you've added your custom instruction above), and fill in the brackets. Each one is written to work with your Projector strategy, your Splenic gut, and your 2/4 way of building.</p>
+
+<div class="promptcard">
+  <div class="pchead"><span class="pccat">Decisions</span><span class="pcname">Run a Splenic gut-check</span></div>
+  <div class="pctext" id="p1">I'm a Projector with Splenic Authority in Human Design, which means my truth is a quiet, instant gut response, not a logical case I build over time. I have a decision I'm sitting with: [describe the decision]. Walk me through a Splenic check-in. Ask me what the decision is, then guide me to notice my very first body response before I explain it logically. Don't let me rationalise first. Lead me to the gut, and help me tell the difference between a quiet "yes," a quiet "no," and fear dressed up as logic.</div>
+  <div class="pcfoot"><button class="pccopy" data-copy="p1">Copy prompt ✦</button></div>
+</div>
+
+<div class="promptcard">
+  <div class="pchead"><span class="pccat">Energy</span><span class="pcname">Audit for the Projector trap</span></div>
+  <div class="pctext" id="p2">I'm a Projector with an open Sacral, so I'm prone to overworking, chasing, and saying yes to open doors that were never real invitations. Help me audit my current business honestly: where am I pushing, hustling, or forcing visibility in ways that drain me, and where am I waiting to be recognised and invited the way my design actually wants? Map this out so I can see where I'm working against my energy, then suggest what to drop and what to lean into.</div>
+  <div class="pcfoot"><button class="pccopy" data-copy="p2">Copy prompt ✦</button></div>
+</div>
+
+<div class="promptcard">
+  <div class="pchead"><span class="pccat">Offers</span><span class="pcname">Build an offer your gut actually wants</span></div>
+  <div class="pctext" id="p3">I'm a 2/4 Projector with Splenic Authority. I'm thinking about a new offer, but I want to make sure it's coming from genuine recognition and a real gut yes, not from pressure or "should." Help me work through it: ask me what genuinely lights me up about the idea, then help me sense whether this is something I actually want to build and would feel energised guiding, or something I think I'm supposed to build. Don't let me skip the gut check, and remind me that as a Projector my best work comes when I'm invited into it, not when I force it.</div>
+  <div class="pcfoot"><button class="pccopy" data-copy="p3">Copy prompt ✦</button></div>
+</div>
+
+<div class="promptcard">
+  <div class="pchead"><span class="pccat">Intuition</span><span class="pcname">Validate a hit with your defined Spleen</span></div>
+  <div class="pctext" id="p4">My intuition runs through a defined Spleen and Gate 26 in my Human Design, so I get fast, accurate instinctive reads, but I sometimes override them with logic. I've been overriding a strong intuitive hit about [describe the situation]. Help me examine it: what might my gut be picking up that my rational mind isn't accounting for? Ask me questions that help me get back to the felt sense and the quiet first knowing, rather than staying stuck in analysis.</div>
+  <div class="pcfoot"><button class="pccopy" data-copy="p4">Copy prompt ✦</button></div>
+</div>
+
+<div class="promptcard">
+  <div class="pchead"><span class="pccat">Visibility</span><span class="pcname">A recognition-based content strategy</span></div>
+  <div class="pctext" id="p5">I'm a 2/4 Projector with the Right Angle Cross of Rulership and Gate 26 (the transmitter). I'm designed to be recognised and invited, not to broadcast or post daily, and I grow through warm relationships (4th line) and depth in private (2nd line). Help me build a content strategy that works with this: a small, sustainable rhythm of resonant pieces that get me recognised by accomplished leaders, lean on my own story as the main transmission, and warm up my network so invitations come to me. I want to reach the right people without hustling or burning my energy.</div>
+  <div class="pcfoot"><button class="pccopy" data-copy="p5">Copy prompt ✦</button></div>
+</div>
+
+<div class="promptcard">
+  <div class="pchead"><span class="pccat">Messaging</span><span class="pcname">Sharpen copy in your voice</span></div>
+  <div class="pctext" id="p6">Here's a piece of writing I've drafted: [paste your draft]. Rewrite it in my voice: precise, warm, and quietly powerful, naming the real thing directly and with grace. No hype, no generic wellness language, no coaching jargon, no em dashes. Lead with the gap I close between outer success and inner truth, not with my methods. Make my soulmate client, an accomplished leader who has everything and still feels something's missing, recognise herself instantly.</div>
+  <div class="pcfoot"><button class="pccopy" data-copy="p6">Copy prompt ✦</button></div>
 </div>
 <div class="bizbox">
   <div class="tag">💼 One Important Thing</div>
@@ -1530,8 +1592,9 @@ function activate(id){
     const target=Math.max(0, am.offsetLeft-(mtabs.clientWidth/2)+(am.offsetWidth/2));
     try{ mtabs.scrollLeft=target; }catch(e){}
   }
-  // jump the page to the top instantly (no smooth scroll, so it can't fight other animations)
+  // jump to the top instantly — scroll both the window (mobile) and the content column (desktop)
   try{ window.scrollTo(0,0); }catch(e){}
+  try{ const c=document.querySelector('.content'); if(c) c.scrollTop=0; }catch(e){}
 }
 function goHome(){ activate('home'); }
 
@@ -1540,6 +1603,17 @@ document.addEventListener('click',e=>{
   if(e.target.closest('#brandHome,#mbrandHome')){ goHome(); return; }
   if(e.target.closest('#homeStartBtn')){ activate('start'); return; }
   if(e.target.closest('#copyBtn')){ copyPrompt(); return; }
+  const pc=e.target.closest('.pccopy');
+  if(pc){
+    const src=document.getElementById(pc.dataset.copy);
+    if(src){
+      const txt=src.innerText;
+      const done=()=>{const o=pc.textContent;pc.textContent='Copied ✓';pc.classList.add('copied');setTimeout(()=>{pc.textContent=o;pc.classList.remove('copied');},2000);};
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done).catch(()=>fallbackCopy(txt,done));}
+      else fallbackCopy(txt,done);
+    }
+    return;
+  }
 });
 
 /* sub-tab switching — shared by desktop buttons and mobile dropdown */
@@ -1583,10 +1657,19 @@ function fallbackCopy(txt,done){
   try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);
 }
 
-/* to top */
+/* to top (throttled with rAF; tracks the scrolling element — window on mobile, .content on desktop) */
 const toTop=document.getElementById('toTop');
-window.addEventListener('scroll',()=>{toTop.classList.toggle('show',window.scrollY>500);});
-toTop.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+const contentEl=document.querySelector('.content');
+function curScroll(){ return (contentEl && contentEl.scrollHeight>contentEl.clientHeight+4) ? contentEl.scrollTop : window.scrollY; }
+let scrollTicking=false;
+function onScroll(){
+  if(scrollTicking)return;
+  scrollTicking=true;
+  requestAnimationFrame(()=>{ toTop.classList.toggle('show',curScroll()>500); scrollTicking=false; });
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+if(contentEl) contentEl.addEventListener('scroll',onScroll,{passive:true});
+toTop.onclick=()=>{ window.scrollTo(0,0); if(contentEl) contentEl.scrollTop=0; };
 
 /* init */
 activate('home');
