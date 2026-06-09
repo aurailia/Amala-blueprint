@@ -22,7 +22,7 @@
   --biz-line:rgba(255,143,199,.4);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:auto}
 body{font-family:'Outfit',sans-serif;background:var(--ink);color:var(--text);line-height:1.72;overflow-x:hidden}
 
 /* cosmic bg */
@@ -78,9 +78,9 @@ body{font-family:'Outfit',sans-serif;background:var(--ink);color:var(--text);lin
 
 /* ===== PANELS ===== */
 .panels{padding:0}
-.panel{display:none;padding:46px 56px 30px;animation:fade .55s ease}
-.panel.active{display:block}
-@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.panel{display:none;padding:46px 56px 30px}
+.panel.active{display:block;animation:fade .4s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
 .eyebrow2{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--pink);font-weight:700;margin-bottom:14px}
 .panel h2.title{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.04;letter-spacing:-.01em;margin-bottom:8px}
 .panel h2.title em{font-style:italic;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
@@ -138,8 +138,8 @@ ol.steps li::before{counter-increment:s;content:counter(s);position:absolute;lef
 .subtab{font-family:'Outfit',sans-serif;font-size:.85rem;font-weight:500;color:var(--text-soft);background:transparent;border:none;padding:9px 18px;border-radius:11px;cursor:pointer;transition:all .25s;display:flex;align-items:center;gap:7px}
 .subtab:hover{color:#fff}
 .subtab.active{background:var(--grad);color:#1a1330;font-weight:600}
-.subpanel{display:none;animation:fade .4s ease}
-.subpanel.active{display:block}
+.subpanel{display:none}
+.subpanel.active{display:block;animation:fade .35s ease}
 
 /* expandable */
 .exp{border:1px solid var(--line);border-radius:16px;margin:12px 0;overflow:hidden;background:rgba(33,26,71,.4)}
@@ -434,6 +434,11 @@ footer .sig{font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;back
 .eft-step .eh .ename{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:700;background:linear-gradient(110deg,#d6357f,#7a3fd0 52%,#1f9b94);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#7a3fd0}
 .eft-step .ebody{padding:16px 22px;color:#2a2236;font-size:1.04rem;line-height:1.75;font-style:italic}
 .eft-round{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:#1f8a82;margin:30px 0 6px}
+/* ===== SIGNATURE PROGRAM PRICING ===== */
+.priceblock{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin:16px 0 4px;padding:16px 20px;border-radius:14px;background:linear-gradient(120deg,rgba(179,71,154,.1),rgba(122,79,208,.07));border:1px solid rgba(179,71,154,.28)}
+.priceblock .plab{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#9a6b00;width:100%;margin-bottom:2px}
+.priceblock .pamt{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:600;background:linear-gradient(110deg,#d6357f,#7a3fd0 55%,#1f9b94);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#7a3fd0}
+.priceblock .pnote{font-size:.92rem;color:#5a4a6e}
 </style>
 </head>
 <body>
@@ -1020,7 +1025,7 @@ CONTENT.wealth=`
 <div class="inner">
 <h5>What This Creates</h5><p>Your Gate 45, the ruler and gatherer, gives you natural authority to bring people together and hold the room. This is the energy behind The Coherence Code, the seminars, the retreats, the rooms people travel for. It's a different income stream from your one-to-one work, and it scales in a way that actually fits a Projector: one well-held room can serve a bunch of people without you cloning your individual sessions. Your gathering gift is how your income grows past the ceiling of your personal calendar.</p>
 <h5>How It Shows Up</h5><p>In the way people naturally orient toward you and want to be in your space. In your vision of rooms, cohorts, and corporate work. In The Coherence Code's five-pillar structure, which is basically a container built to gather and lead a group through a transformation. In the sense that you're not only meant to work one-to-one, but to hold and guide a community of accomplished people.</p>
-<h5>The Wealth Leak</h5><p>Right now your visible offer leans heavily toward the one-to-one work, with the group programme still in its "coming soon" phase. The leak is that your gathering gift, which is a genuine money-maker, isn't yet earning at the scale it's designed for. The Coherence Code at the founding rate of fifteen hundred euros is the seed of this stream. Leaving it permanently "almost ready" keeps a big chunk of your design, and your income, asleep.</p>
+<h5>The Wealth Leak</h5><p>Right now your visible offer leans heavily toward the one-to-one work, with the group programme still in its "coming soon" phase. The leak is that your gathering gift, which is a genuine money-maker, isn't yet earning at the scale it's designed for. The Coherence Code at the founding rate of fifteen hundred dollars is the seed of this stream. Leaving it permanently "almost ready" keeps a big chunk of your design, and your income, asleep.</p>
 <h5>Wealth Activation</h5><ul>
 <li>Give The Coherence Code a real launch date and fill the founding cohort through your warm network, exactly how your 4th line works. Let the first group prove the model, then raise the rate.</li>
 <li>Build toward one or two gathering offers a year, a retreat, a seminar, an intensive room, that become your higher-leverage income alongside your selective one-to-one work.</li>
@@ -1290,6 +1295,7 @@ CONTENT.programs=`
 <li>A closing integration session that names what shifted and maps how they carry coherence forward on their own</li>
 </ul>
 <h5>Why This Works</h5><p>This is your design at its best: a few deep, well-paid relationships instead of a pile of shallow ones. Three months is enough time to do the real work without an open-ended commitment that drains you. It suits your gut authority, which works session by session in the moment, and your 2nd line, which does its most jaw-dropping work in private. Price this as your premium offer. It's the heart of the selective, work-from-anywhere practice you described.</p>
+<div class="priceblock"><span class="plab">💎 Suggested Pricing</span><span class="pamt">$4,500 &ndash; $6,000</span><span class="pnote">for the full three-month container. Start at the lower end for founding clients, then raise it as your calendar fills and the testimonials come in.</span></div>
 <div class="feel">"This is for the leader who has built everything they were supposed to build and privately knows something essential is still missing. Three months, in a private container, to close the gap between who you've become and who you actually are."</div>
 </div></details>
 
@@ -1303,6 +1309,7 @@ CONTENT.programs=`
 <li>A guided audio made from or for their journey, so they can return to the state and deepen it on their own</li>
 </ul>
 <h5>Why This Works</h5><p>This is your most distinctive modality packaged as a standalone premium experience. It serves the leader who's curious and ready but not sure about a longer container, and it lets your rarest gift be the doorway. It's intense and concentrated, exactly how a Projector is built to work: full presence in a focused burst, then rest. For a lot of clients, the intensive becomes the recognition moment that leads them into the full three-month container afterward.</p>
+<div class="priceblock"><span class="plab">💎 Suggested Pricing</span><span class="pamt">$1,500 &ndash; $2,500</span><span class="pnote">for the prep, deep session(s), integration, and personal audio. A natural stepping stone that often leads straight into the full container.</span></div>
 <div class="feel">"Some things can't be reasoned through. This is the work that goes beneath the capable, busy mind to the place your real answers have always lived, and lets you feel coherence instead of just understanding it."</div>
 </div></details>
 
@@ -1313,9 +1320,10 @@ CONTENT.programs=`
 <li>A mix of pre-recorded teaching they work through on their own time and live group sessions where you guide, see, and work with the room, so your live energy is concentrated, not spread thin</li>
 <li>Guided audio journeys from your hypnosis work woven through the pillars, so the group feels the depth, not just the framework</li>
 <li>A contained group space for connection and shared recognition between sessions</li>
-<li>A founding cohort at one thousand five hundred euros, filled through your warm network, with the rate going up once the model's proven</li>
+<li>A founding cohort at one thousand five hundred dollars, filled through your warm network, with the rate going up once the model's proven</li>
 </ul>
 <h5>Why This Works</h5><p>This is your Gate 45 gathering energy plus your defined Head and Ajna turned into a scalable offer. The five-pillar structure gives your brain-power a clear container, and the group format lets you serve a lot of people from focused bursts of live energy instead of an endless one-to-one calendar. It's also the seed of the rooms, seminars, and retreats in your three-year vision. Fill the first cohort through your 4th line network, let it prove itself, then grow it.</p>
+<div class="priceblock"><span class="plab">💎 Suggested Pricing</span><span class="pamt">$1,500 founding &rarr; $2,500+</span><span class="pnote">per seat for the twelve weeks. Open at the founding rate to fill the first cohort through your warm network, then raise it once the model's proven.</span></div>
 <div class="feel">"Twelve weeks, five pillars, one room of people who have achieved everything and are ready for what's beyond the proving. This is where outer success and inner truth stop fighting and start to click into place."</div>
 </div></details>`;
 </script>
@@ -1334,27 +1342,27 @@ CONTENT.money=`
   <div class="total">≈ $12,000 / month from deep 1:1 work alone</div>
 </div>
 <div class="rev">
-  <div class="rt">Model Two — The Blend (1:1 + Intensives + Low-Ticket)</div>
+  <div class="rt">Model Two — The Blend (1:1 + Intensives + Single Sessions)</div>
   <div class="line"><span>3 Coherence Container clients</span><span>~$9,000</span></div>
   <div class="line"><span>2 Quantum Journey Intensives</span><span>~$5,000</span></div>
-  <div class="line"><span>The Coherence Sessions ($7) running quietly</span><span>~$500–1,500</span></div>
+  <div class="line"><span>3–5 single 1:1 sessions ($222 each)</span><span>~$670–1,100</span></div>
   <div class="total">≈ $15,000–16,000 / month, more variety, less reliance on any one stream</div>
 </div>
 <div class="rev">
   <div class="rt">Model Three — The Gatherer (1:1 + The Coherence Code)</div>
   <div class="line"><span>2–3 Coherence Container clients</span><span>~$6,000–9,000</span></div>
-  <div class="line"><span>Coherence Code cohort (≈10 founding @ €1,500, spread over the launch)</span><span>~$5,000–8,000 / mo equivalent</span></div>
-  <div class="line"><span>The Coherence Sessions ($7)</span><span>~$500</span></div>
+  <div class="line"><span>Coherence Code cohort (≈10 founding @ $1,500, spread over the launch)</span><span>~$5,000–8,000 / mo equivalent</span></div>
+  <div class="line"><span>2–4 single 1:1 sessions ($222 each)</span><span>~$440–890</span></div>
   <div class="total">≈ $12,000–18,000 / month, with your gathering gift carrying real weight</div>
 </div>
 
 <h3 class="sec">The Step-by-Step Path</h3>
 <ol class="steps">
-<li><b>Months 1–2 — Set the foundations.</b> Lock your premium 1:1 pricing from your Will. Build and record The Coherence Sessions ($7 bundle) and let it run quietly in the background. Start tending your 4th line network on purpose, past clients, colleagues, the corporate and wellness people you want to be invited by.</li>
+<li><b>Months 1–2 — Set the foundations.</b> Lock your premium 1:1 pricing from your Will. Build and record The Coherence Sessions ($7 bundle) to use as a recognition tool you can share with your network and new connections. Start tending your 4th line network on purpose, past clients, colleagues, the corporate and wellness people you want to be invited by.</li>
 <li><b>Month 3 — Fill your premium 1:1.</b> Focus on landing three to four Coherence Container clients through recognition and warm invitation. At your premium rate, that alone gets you near the bottom of your range. This is your stable base.</li>
-<li><b>Months 4–5 — Add the intensives.</b> Offer the Quantum Journey Intensive to people who want depth without a full container, including low-ticket buyers who've recognised your gift. This stacks income without adding many hours.</li>
-<li><b>Month 6 — Launch The Coherence Code founding cohort.</b> Fill it through your warm network at the €1,500 founding rate. Let the first group prove the model and generate testimonials and referrals for the next one.</li>
-<li><b>Months 9–12 — Stabilise and become selective.</b> With 1:1, intensives, low-ticket, and a proven group programme all running, your months land in the ten to twenty range. Now you do the most Projector thing of all: get more selective, raise your rates, and protect your energy as recognition grows.</li>
+<li><b>Months 4–5 — Add the intensives.</b> Offer the Quantum Journey Intensive to people who want depth without a full container, and to anyone who's recognised your gift and isn't ready for the three months. This stacks income without adding many hours.</li>
+<li><b>Month 6 — Launch The Coherence Code founding cohort.</b> Fill it through your warm network at the $1,500 founding rate. Let the first group prove the model and generate testimonials and referrals for the next one.</li>
+<li><b>Months 9–12 — Stabilise and become selective.</b> With your containers, intensives, single sessions, and a proven group programme all running, your months land in the ten to twenty range. Now you do the most Projector thing of all: get more selective, raise your rates, and protect your energy as recognition grows.</li>
 </ol>
 <div class="bizbox">
   <div class="tag">💼 Why This Fits Your Design</div>
@@ -1520,8 +1528,7 @@ function activate(id){
   const am=mtabs.querySelector('button.active');
   if(am){
     const target=Math.max(0, am.offsetLeft-(mtabs.clientWidth/2)+(am.offsetWidth/2));
-    try{ mtabs.scrollTo({left:target,behavior:'smooth'}); }
-    catch(e){ mtabs.scrollLeft=target; }
+    try{ mtabs.scrollLeft=target; }catch(e){}
   }
   // jump the page to the top instantly (no smooth scroll, so it can't fight other animations)
   try{ window.scrollTo(0,0); }catch(e){}
