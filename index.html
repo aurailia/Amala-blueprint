@@ -431,7 +431,7 @@ footer .sig{font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;back
 .eft-step{border:1px solid rgba(138,63,176,.18);border-radius:16px;margin:14px 0;background:rgba(255,255,255,.66);overflow:hidden;max-width:940px}
 .eft-step .eh{display:flex;align-items:center;gap:12px;padding:16px 22px;border-bottom:1px solid rgba(138,63,176,.12)}
 .eft-step .eh .epoint{flex:0 0 auto;font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--grad);padding:6px 12px;border-radius:999px}
-.eft-step .eh .ename{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#7a4fd0}
+.eft-step .eh .ename{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:700;background:linear-gradient(110deg,#d6357f,#7a3fd0 52%,#1f9b94);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#7a3fd0}
 .eft-step .ebody{padding:16px 22px;color:#2a2236;font-size:1.04rem;line-height:1.75;font-style:italic}
 .eft-round{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:#1f8a82;margin:30px 0 6px}
 </style>
@@ -1516,8 +1516,15 @@ function activate(id){
   mtabs.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.id===id));
   // hide the sticky identity bar on the home screen (it already states the type there)
   if(idbar) idbar.style.display = (id==='home') ? 'none' : '';
-  const am=mtabs.querySelector('button.active'); if(am&&am.scrollIntoView)am.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
-  window.scrollTo({top:0,behavior:'smooth'});
+  // center the active mobile tab WITHIN its own strip (horizontal only) — never scroll the page
+  const am=mtabs.querySelector('button.active');
+  if(am){
+    const target=Math.max(0, am.offsetLeft-(mtabs.clientWidth/2)+(am.offsetWidth/2));
+    try{ mtabs.scrollTo({left:target,behavior:'smooth'}); }
+    catch(e){ mtabs.scrollLeft=target; }
+  }
+  // jump the page to the top instantly (no smooth scroll, so it can't fight other animations)
+  try{ window.scrollTo(0,0); }catch(e){}
 }
 function goHome(){ activate('home'); }
 
